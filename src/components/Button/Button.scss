@@ -1,0 +1,18 @@
+.button {
+  padding: .75rem 0;
+  width: 100%;
+  border-radius: 0.5rem;
+  background: #3369F3;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+
+  &__text {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 0.8125rem;
+    color: #fff;
+    text-align: center;
+  }
+}

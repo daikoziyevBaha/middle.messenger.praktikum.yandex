@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  display: flex;
+
+  .sidebar {
+    width: 100%;
+    padding: .62rem;
+    max-width: 19.4rem;
+    background-color: #FBFBFB;
+    height: 100vh;
+
+    &__breadcrumb {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 3.5rem;
+    }
+    &__link-profile {
+      color: #999;
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 0.75rem;
+    }
+    &__search-input input{
+      border-radius: 0.3125rem;
+      background: #EFEFEF;
+      border: none;
+      width: 100%;
+      padding: .38rem 0;
+      text-align: center;
+      margin-bottom: .87rem;
+    }
+  }
+  .content {
+    width: 100%;
+  }
+}

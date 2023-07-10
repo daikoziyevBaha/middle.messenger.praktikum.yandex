@@ -1,13 +1,9 @@
-import Handlebars from 'handlebars';
-import LoginPage from "./pages/LoginPage/LoginPage.js";
 import './index.scss';
-import RegisterPage from "./pages/RegisterPage/RegisterPage.js";
 import {routes} from "./router/routes.js";
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
+    console.log(window.location.pathname, routes[window.location.pathname])
     let Component = routes[window.location.pathname];
     root.innerHTML = Component();
 

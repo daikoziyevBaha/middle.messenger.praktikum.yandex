@@ -1,7 +1,7 @@
-import './ChatListPage.scss';
-import ChatListPageTmpl from "./ChatListPage.tmpl.js";
+import './ChatOpenPage.scss';
 import Handlebars from "handlebars";
 import ChatList from "../../components/ChatList/ChatList.js";
+import ChatOpenPageTmpl from "./ChatOpenPage.tmpl.js";
 const data = [
     {
         avatar: "",
@@ -130,9 +130,8 @@ const data = [
         uncheckedMessagesCount: 5
     },
 ]
-export default function ChatListPage() {
-
-    const template = Handlebars.compile(ChatListPageTmpl);
+export default function ChatOpenPage() {
+    const template = Handlebars.compile(ChatOpenPageTmpl);
     const chatList = ChatList({data: data});
     return template({chatList})
 }

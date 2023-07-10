@@ -14,7 +14,7 @@ export default `
             </div>
         </div>
         <div class="content">
-            Выберите чат чтобы отправить сообщение
+            123
         </div>
     </div>
 `

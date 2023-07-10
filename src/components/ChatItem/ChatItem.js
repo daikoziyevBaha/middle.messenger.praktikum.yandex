@@ -4,5 +4,5 @@ import './ChatItem.scss';
 
 export default function ChatItem({chat= {}}) {
     const template = Handlebars.compile(ChatItemTmpl);
-    return template({})
+    return template({...chat})
 }

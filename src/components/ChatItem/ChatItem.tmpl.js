@@ -1,11 +1,12 @@
 export default `
     <div class="chat">
         <div class="chat__avatar-block">
-            <div class="avatar">
-            {{#if avatar}}
-                <img src="{{avatar}}" alt="person avatar" />
-            {{/if}}
-            </div>
+            {{{avatar}}}
+<!--            <div class="avatar">-->
+<!--            {{#if avatar}}-->
+<!--                <img src="{{avatar}}" alt="person avatar" />-->
+<!--            {{/if}}-->
+<!--            </div>-->
         </div>
         <div class="chat__content">
             <div class="chat__title">

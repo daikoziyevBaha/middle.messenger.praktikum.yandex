@@ -2,6 +2,7 @@ import './ChatOpenPage.scss';
 import Handlebars from "handlebars";
 import ChatList from "../../components/ChatList/ChatList.js";
 import ChatOpenPageTmpl from "./ChatOpenPage.tmpl.js";
+import ChatDetails from "../../components/ChatDetails/ChatDetails.js";
 const data = [
     {
         avatar: "",
@@ -132,6 +133,7 @@ const data = [
 ]
 export default function ChatOpenPage() {
     const template = Handlebars.compile(ChatOpenPageTmpl);
+    const chatDetails = ChatDetails();
     const chatList = ChatList({data: data});
-    return template({chatList})
+    return template({chatList, chatDetails})
 }

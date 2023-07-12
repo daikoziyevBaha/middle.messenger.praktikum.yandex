@@ -10,13 +10,32 @@ export default `
                     Vadim
                 </div>
             </div>
-            <div class="options">
-                <svg xmlns="http://www.w3.org/2000/svg" width="3" height="16" viewBox="0 0 3 16" fill="none">
-                  <circle cx="1.5" cy="2" r="1.5" fill="#1E1E1E"/>
-                  <circle cx="1.5" cy="8" r="1.5" fill="#1E1E1E"/>
-                  <circle cx="1.5" cy="14" r="1.5" fill="#1E1E1E"/>
-                </svg>
-            </div>
+            <button 
+                class="chat-options"
+                onclick="chat.handleOpenChatOptions()"
+            >
+                <div class="chat-options__window" id="chat-options-window">
+                    <div class="option" onclick="chat.handleOpenAddUserModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                          <circle cx="11" cy="11" r="10.25" stroke="#3369F3" stroke-width="1.5"/>
+                        </svg>
+                        <p class="option__text">Добавить пользователя</p>
+                    </div>
+                    <div class="option" onclick="chat.handleOpenDeleteUserModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                          <circle cx="11" cy="11" r="10.25" stroke="#3369F3" stroke-width="1.5"/>
+                        </svg>
+                        <p class="option__text">Удалить пользователя</p>
+                    </div>
+                </div>
+                <div class="chat-options__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="3" height="16" viewBox="0 0 3 16" fill="none">
+                      <circle cx="1.5" cy="2" r="1.5" fill="#1E1E1E"/>
+                      <circle cx="1.5" cy="8" r="1.5" fill="#1E1E1E"/>
+                      <circle cx="1.5" cy="14" r="1.5" fill="#1E1E1E"/>
+                    </svg>
+                </div>
+            </button>
         </div>
         <div class="chat-details__body">
             <div class="chat-container">
@@ -56,9 +75,8 @@ export default `
         </div>
         <div class="chat-details__footer">
             <button 
-                id="attach-btn"
                 class="attach-menu"
-                onclick="handleOpenAttachMenu()"
+                onclick="chat.handleOpenAttachMenu()"
             >
                 <div class="menu-options-window" id="attach-menu">
                     <div class="option">
@@ -103,6 +121,12 @@ export default `
                     <path d="M15 9L19 14L15 19" stroke="white" stroke-width="1.6"/>
                 </svg>
             </button>
+        </div>
+        <div class="add-user-modal" id="add-user-modal">
+            {{{addUserModal}}}
+        </div>
+        <div class="delete-user-modal" id="delete-user-modal">
+            {{{deleteUserModal}}}
         </div>
     </div>
 `

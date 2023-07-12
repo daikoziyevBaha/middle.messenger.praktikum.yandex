@@ -1,0 +1,24 @@
+.delete-user-form {
+  //max-height: 28.75rem;
+  &__label {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 0 2.5rem 0;
+    color: #1E1E1E;
+  }
+
+  &__field {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .87rem;
+    margin-bottom: 0.87rem;
+  }
+}

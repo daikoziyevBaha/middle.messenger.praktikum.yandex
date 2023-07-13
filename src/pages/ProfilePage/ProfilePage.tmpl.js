@@ -1,8 +1,16 @@
+import NoAvatar from '../../static/images/no-avatar.png';
 export default `
     <div class="profile-container">
         <div class="profile">
-            <div class="profile__avatar">
-                <img alt="profile avatar"/>
+            <div class="profile__avatar" onclick="window.profile.openChangeAvatarModal()">
+                {{#if avatar}}
+                    <img src="{{avatar}}" alt="profile avatar"/>
+                {{else}}
+                    <img src="${NoAvatar}" alt="profile avatar"/>
+                {{/if}}
+                <div class="profile__text">
+                    <p class="">Поменять аватар</p>
+                </div>
             </div>
             <p class="profile__name">Name{{name}}</p>
             <div class="user-data__list">
@@ -24,5 +32,8 @@ export default `
             <a href="/" class="link link_red">Выйти</a>
         </div>
         {{{GoBackBlock}}}
+        <div class="change-avatar-window" id="change-avatar-modal">
+            {{{ChangeAvatarModal}}}
+        </div>
     </div>
 `

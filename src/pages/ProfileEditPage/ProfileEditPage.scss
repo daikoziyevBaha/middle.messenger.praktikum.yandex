@@ -10,7 +10,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  &__submit {
+    width: 60%;
+  }
   &__name {
     color: #1E1E1E;
     text-align: center;

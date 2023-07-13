@@ -9,10 +9,12 @@ export default function LoginForm() {
     const loginInput = Input({
         label: 'Логин',
         value: '',
+        name: 'login',
     });
     const passwordInput = Input({
         label: 'Пароль',
         value: '',
+        name: 'password'
     });
     const authButton = Button({text: 'Авторизоваться'});
     const registerLink = Link({href: '/register', text: 'Нет аккаунта?'});

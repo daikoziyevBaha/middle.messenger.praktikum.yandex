@@ -9,25 +9,31 @@ export default function RegisterForm() {
     const emailInput = Input({
         label: 'Почта',
         value: '',
+        name: 'email'
     });
     const loginInput = Input({
         label: 'Логин',
         value: '',
+        name: 'login'
     });
     const nameInput = Input({
         label: 'Имя',
         value: '',
+        name: 'first_name'
     });const femaleInput = Input({
         label: 'Фамилия',
         value: '',
+        name: 'second_name'
     });
     const phoneInput = Input({
         label: 'Номер',
         value: '',
+        name: 'phone'
     });
     const passwordInput = Input({
         label: 'Пароль',
         value: '',
+        name: 'password'
     });
     const passwordConfirmationInput = Input({
         label: 'Пароль (еще раз)',

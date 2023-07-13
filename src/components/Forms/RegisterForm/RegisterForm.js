@@ -38,6 +38,7 @@ export default function RegisterForm() {
     const passwordConfirmationInput = Input({
         label: 'Пароль (еще раз)',
         value: '',
+        name: 'password-confirmation'
     });
     const fields = [emailInput, loginInput, nameInput, femaleInput, phoneInput, passwordInput, passwordConfirmationInput]
     const registerButton = Button({text: 'Зарегистрироваться'});

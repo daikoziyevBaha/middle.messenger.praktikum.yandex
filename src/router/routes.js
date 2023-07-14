@@ -21,4 +21,3 @@ export const routes = {
     '/404': NotFound,
     '/500': ServerError
 }
-

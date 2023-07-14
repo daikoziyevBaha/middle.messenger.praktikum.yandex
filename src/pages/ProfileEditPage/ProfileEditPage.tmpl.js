@@ -9,35 +9,35 @@ export default `
                     <img src="${NoAvatar}" alt="profile avatar"/>
                 {{/if}}
             </div>
-            <div class="user-data__list">
-                <div class="user-data__element">
-                    <p class="user-data__label">Почта</p>
-                    <p class="user-data__value">pochta@yandex.ru</p>
+            <form class="user-data__list">
+                <fieldset class="user-data__element">
+                    <label class="user-data__label">Почта</label>
+                    <input name="email" class="user-data__value" placeholder="pochta@yandex.ru" />
+                </fieldset>
+                <fieldset class="user-data__element">
+                    <label class="user-data__label">Логин</label>
+                    <input name="login" class="user-data__value" placeholder="ivanivanov" />
+                </fieldset>
+                <fieldset class="user-data__element">
+                    <label class="user-data__label">Имя</label>
+                    <input name="first_name" class="user-data__value" placeholder="Иван" />
+                </fieldset>
+                <fieldset class="user-data__element">
+                    <label class="user-data__label">Фамилия</label>
+                    <input name="second_name" class="user-data__value" placeholder="Иванов" />
+                </fieldset>
+                <fieldset class="user-data__element">
+                    <label class="user-data__label">Имя в чате</label>
+                    <input name="display_name" class="user-data__value" placeholder="Иван" />
+                </fieldset>
+                <fieldset class="user-data__element">
+                    <label class="user-data__label">Телефон</label>
+                    <input name="phone" class="user-data__value" placeholder="+7 (909) 967 30 30" />
+                </fieldset>
+                <div class="profile__submit">
+                   {{{submitButton}}}
                 </div>
-                <div class="user-data__element">
-                    <p class="user-data__label">Логин</p>
-                    <p class="user-data__value">ivanivanov</p>
-                </div>
-                <div class="user-data__element">
-                    <p class="user-data__label">Имя</p>
-                    <p class="user-data__value">Иван</p>
-                </div>
-                <div class="user-data__element">
-                    <p class="user-data__label">Фамилия</p>
-                    <p class="user-data__value">Иванов</p>
-                </div>
-                <div class="user-data__element">
-                    <p class="user-data__label">Имя в чате</p>
-                    <p class="user-data__value">Иван</p>
-                </div>
-                <div class="user-data__element">
-                    <p class="user-data__label">Телефон</p>
-                    <p class="user-data__value">+7 (909) 967 30 30</p>
-                </div>
-            </div>
-            <div class="profile__submit">
-               {{{submitButton}}}
-            </div>
+            </form>
         </div>
         {{{GoBackBlock}}}
     </div>

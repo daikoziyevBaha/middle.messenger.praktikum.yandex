@@ -17,6 +17,7 @@ dist
 !.vscode/extensions.json
 .idea
 .editorconfig
+.env
 .DS_Store
 *.suo
 *.ntvs*

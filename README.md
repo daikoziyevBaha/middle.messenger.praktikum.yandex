@@ -21,4 +21,4 @@ npm run dev
 npm run build
 ```
 ## Test domain link
-[MessengerApp]([https://choosealicense.com/licenses/mit/](https://dapper-seahorse-a3620c.netlify.app/)https://dapper-seahorse-a3620c.netlify.app/)
+[MessengerApp](https://dapper-seahorse-a3620c.netlify.app/)

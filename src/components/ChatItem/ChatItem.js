@@ -1,11 +1,10 @@
-import ChatItemTmpl from "./ChatItem.tmpl.js";
-import Handlebars from "handlebars";
+import Handlebars from 'handlebars';
+import ChatItemTmpl from './ChatItem.tmpl';
 import './ChatItem.scss';
-import Avatar from "../Avatar/Avatar.js";
+import Avatar from '../Avatar/Avatar';
 
-export default function ChatItem({chat= {}}) {
-
+export default function ChatItem({ chat = {} }) {
     const template = Handlebars.compile(ChatItemTmpl);
-    const avatar = Avatar({image: chat.avatar});
-    return template({...chat, avatar})
+    const avatar = Avatar({ image: chat.avatar });
+    return template({ ...chat, avatar });
 }

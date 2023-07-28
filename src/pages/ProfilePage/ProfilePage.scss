@@ -27,43 +27,7 @@
     border-bottom: 1.5px solid #EAEAEA;
     margin-bottom: 10px;
   }
-  &__avatar {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background: #EFEFEF;
-    justify-self: center;
-    margin-bottom: 21px;
-    cursor: pointer;
-    position: relative;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    &__text {
-      width: 100%;
-      height: 100%;
-      background: #000;
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 12;
-      border-radius: 50%;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-        &:hover {
-          fill: #000;
-          opacity: 0.5;
-        }
-    }
-  }
+}
 
 
 .user-data {
@@ -112,6 +76,10 @@
   line-height: 0.8125rem;
   &_red {
     color: red;
+
+      a {
+          color: red;
+      }
   }
 }
 

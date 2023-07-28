@@ -1,8 +1,6 @@
-import ChatItem from "../ChatItem/ChatItem.js";
+import ChatItem from '../ChatItem/ChatItem';
 
-export default function ChatList({data=[]}) {
-    const chatList = data.map(chat => {
-        return ChatItem({chat})
-    }).join('');
+export default function ChatList({ data = [] }) {
+    const chatList = data.map((chat) => ChatItem({ chat })).join('');
     return chatList;
 }

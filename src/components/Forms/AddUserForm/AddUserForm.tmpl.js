@@ -8,4 +8,4 @@ export default `
             {{{authButton}}}
         </div>
     </form>
-`
+`;

@@ -1,18 +1,18 @@
-import Input from "../../Input/Input.js";
-import Button from "../../Button/Button.js";
-import Handlebars from "handlebars";
-import LoginFormTmpl from "./AddUserForm.tmpl.js";
+import Handlebars from 'handlebars';
+import OutlinedInput from '../../OutlinedInput/OutlinedInput';
+import Button from '../../Button/Button';
+import LoginFormTmpl from './AddUserForm.tmpl';
 import './AddUserForm.scss';
 
 export default function AddUserForm() {
-    const loginInput = Input({
+    const loginInput = OutlinedInput({
         label: 'Логин',
         value: '',
     });
-    const authButton = Button({text: 'Добавить'});
+    const authButton = Button({ text: 'Добавить' });
     const template = Handlebars.compile(LoginFormTmpl);
     return template({
-        loginInput: loginInput,
-        authButton: authButton,
+        loginInput,
+        authButton,
     });
 }

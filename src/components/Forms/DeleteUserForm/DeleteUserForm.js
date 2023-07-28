@@ -1,18 +1,18 @@
-import Input from "../../Input/Input.js";
-import Button from "../../Button/Button.js";
-import Handlebars from "handlebars";
-import LoginFormTmpl from "./DeleteUserForm.tmpl.js";
+import Handlebars from 'handlebars';
+import OutlinedInput from '../../OutlinedInput/OutlinedInput';
+import Button from '../../Button/Button';
+import LoginFormTmpl from './DeleteUserForm.tmpl';
 import './DeleteUserForm.scss';
 
 export default function DeleteUserForm() {
-    const loginInput = Input({
+    const loginInput = OutlinedInput({
         label: 'Логин',
         value: '',
     });
-    const authButton = Button({text: 'Удалить'});
+    const authButton = Button({ text: 'Удалить' });
     const template = Handlebars.compile(LoginFormTmpl);
     return template({
-        loginInput: loginInput,
-        authButton: authButton,
+        loginInput,
+        authButton,
     });
 }

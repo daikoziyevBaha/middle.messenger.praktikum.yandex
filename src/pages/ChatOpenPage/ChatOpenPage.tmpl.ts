@@ -9,12 +9,10 @@ export default `
             <div class="sidebar__search-input">
                 <input type="text" placeholder="Поиск"/>
             </div>
-            <div class="chat-list">
-                {{{chatList}}}
-            </div>
+            {{{chatList}}}
         </div>
         <div class="chat-content">
             {{{chatDetails}}}
         </div>
     </div>
-`
+`;

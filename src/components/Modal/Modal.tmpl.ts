@@ -3,4 +3,3 @@ export default `
         {{{content}}}
     </div>
 `;
-// modal-container

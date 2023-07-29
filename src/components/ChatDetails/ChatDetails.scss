@@ -27,6 +27,7 @@
   }
 
 }
+
 .chat-container {
   display: flex;
   flex-direction: column;
@@ -35,6 +36,7 @@
   height: 100%;
   padding: 20px 0;
 }
+
 .messages-date {
   justify-self: center;
   margin-bottom: 30px;
@@ -53,10 +55,11 @@
 .message-left {
   max-width: 43%;
   background: #F8F8F8;
-  border-radius: 0 12px 12px 12px;
+  border-radius: 0 12px 12px;
   padding: 11px;
   margin-bottom: 10px;
 }
+
 .message-time {
   color: #999;
   text-align: right;
@@ -71,12 +74,13 @@
     color: #3369F3;
   }
 }
+
 .message-right {
   align-self: end;
   justify-self: end;
   max-width: 43%;
   background: #E4EDFD;
-  border-radius: 12px 12px 0 12px;
+  border-radius: 12px 12px 0;
   padding: 11px;
   margin-bottom: 10px;
 }
@@ -95,13 +99,14 @@
     object-fit: cover;
   }
 }
+
 .message-image-time {
   position: absolute;
   right: 11px;
   bottom: 11px;
   padding: 2px 7px;
   border-radius: 30px;
-  background: rgba(82, 82, 82, 0.50);
+  background: rgb(82 82 82 / 50%);
 
   &__text {
     color: #FFF;
@@ -132,6 +137,7 @@
     background: #EFEFEF;
     border-radius: 50%;
   }
+
   &__name {
     color: #1E1E1E;
     font-size: 13px;
@@ -154,6 +160,7 @@
   background: inherit;
   display: flex;
   align-items: center;
+    cursor: pointer;
 }
 
 .attach-menu {
@@ -170,7 +177,7 @@
   padding: 15px;
   border-radius: 12px;
   background: #FFF;
-  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -191,7 +198,7 @@
     padding: 15px;
     border-radius: 12px;
     background: #FFF;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
     display: flex;
     flex-direction: column;
     gap: 16px;

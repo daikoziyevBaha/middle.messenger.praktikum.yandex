@@ -1,14 +1,14 @@
 import './ProfilePage.scss';
-import ProfilePageTmpl from "./ProfilePage.tmpl";
-import Block from "../../components/Block/Block";
+import ProfilePageTmpl from './ProfilePage.tmpl';
+import Block from '../../components/Block/Block';
 import ChangeAvatarForm from '../../components/Forms/ChangeAvatarForm/ChangeAvatar';
-import FileInput from "../../components/FileInput/FileInput";
-import Input from "../../ui/Input/Input";
-import Button from "../../components/Button/Button";
+import FileInput from '../../components/FileInput/FileInput';
+import Input from '../../ui/Input/Input';
+import Button from '../../components/Button/Button';
 import ModalBlock from '../../components/ModalBlock/ModalBlock';
-import GoBack from "../../components/GoBackBlock/GoBack";
-import Avatar from "../../components/Avatar/Avatar";
-import Link from "../../components/Link/Link";
+import GoBack from '../../components/GoBackBlock/GoBack';
+import Avatar from '../../components/Avatar/Avatar';
+import Link from '../../components/Link/Link';
 
 class ProfilePage extends Block {
     constructor(props) {
@@ -34,7 +34,6 @@ export default function getProfilePage() {
         },
         text: 'Поменять',
     });
-    // class="file-input__label" for="file_input_id" id="file_input_label"
     const fileInput = new FileInput({
         attr: {
             class: 'file-input__label',
@@ -97,7 +96,7 @@ export default function getProfilePage() {
         href: '/',
         text: 'Выйти',
     });
-    const profilePage = new ProfilePage({
+    return new ProfilePage({
         name: 'Test name',
         attr: {
             class: 'profile-container',
@@ -109,19 +108,4 @@ export default function getProfilePage() {
         GoBackBlock,
         ChangeAvatarModal: modalBlock,
     });
-    return profilePage;
 }
-// export default function ProfilePage() {
-//     if (window && window.hasOwnProperty("profile")) {
-//         window.profile = {}
-//         window.profile.openChangeAvatarModal = () => {
-//             const modal = document.querySelector("#change-avatar-modal");
-//             modal.style.display = "block"
-//         }
-//     }
-//     const template = Handlebars.compile(ProfilePageTmpl)
-//     const GoBackBlock = GoBack({href: '/'})
-//     const changeAvatarForm = ChangeAvatarForm();
-//     const ChangeAvatarModal = ModalBlock({content: changeAvatarForm})
-//     return template({GoBackBlock, ChangeAvatarModal})
-// }

@@ -6,7 +6,6 @@ export default class OutlinedInput extends Block {
 
     constructor(props) {
         super('label', props);
-        // this.loginInput = new props.input();
     }
 
     render() {

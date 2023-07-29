@@ -1,4 +1,3 @@
 export default `
-    <span class="button__text">{{text}}</span>
+    <span class="button__text">{{{text}}}</span>
 `;
-// button

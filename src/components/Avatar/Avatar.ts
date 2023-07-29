@@ -8,7 +8,6 @@ export default class Avatar extends Block {
     }
 
     render() {
-        console.log('hello world!');
         return this.compile(AvatarTmpl, this.props);
     }
 }

@@ -1,138 +1,42 @@
 import './ChatListPage.scss';
-import ChatListPageTmpl from "./ChatListPage.tmpl";
-import Handlebars from "handlebars";
-import ChatList from "../../components/ChatList/ChatList";
-const data = [
-    {
-        avatar: "",
-        name: "Test name",
-        lastMessageDate: "10:50",
-        message: "123we123we123we123we123we123we123we123we123we123we123we123we123we123we123we123we123we123we123we123we123we123we",
-        uncheckedMessagesCount: 4
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 0
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 0
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 0
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 0
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 0
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-    {
-        avatar: "",
-        name: "Test name 2",
-        lastMessageDate: "Пт",
-        message: "скучное сообщение",
-        uncheckedMessagesCount: 5
-    },
-]
-export default function ChatListPage() {
+import ChatListPageTmpl from './ChatListPage.tmpl';
+import Block from '../../components/Block/Block';
+import ChatItem from '../../components/ChatItem/ChatItem';
+import ChatList from '../../components/ChatList/ChatList';
+import AvatarShort from '../../components/AvatarShort/AvatarShort';
+import { data } from '../../constants/MockData';
 
-    const template = Handlebars.compile(ChatListPageTmpl);
-    const chatList = ChatList({data: data});
-    return template({chatList})
+class ChatListPage extends Block {
+    constructor(props) {
+        super('div', props);
+    }
+
+    render() {
+        return this.compile(ChatListPageTmpl, this.props);
+    }
+}
+export default function getChatListPage() {
+    const chats = data.map((chat) => new ChatItem({
+        attr: {
+            class: 'chat',
+        },
+        ...chat,
+        avatar: new AvatarShort({
+            attr: {
+                class: 'avatar-block',
+            },
+        }),
+    }));
+    const chatList = new ChatList({
+        attr: {
+            class: 'chat-list',
+        },
+        chatList: chats,
+    });
+    return new ChatListPage({
+        attr: {
+            class: 'container',
+        },
+        chatList,
+    });
 }

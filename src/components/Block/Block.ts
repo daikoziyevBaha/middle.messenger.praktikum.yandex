@@ -133,10 +133,7 @@ class Block {
     }
 
     componentDidUpdate(oldProps: BlockProps, newProps: BlockProps) {
-        if (oldProps === newProps) {
-            return false;
-        }
-        return true;
+        return oldProps !== newProps;
     }
 
     setProps = (nextProps) => {
@@ -180,13 +177,8 @@ class Block {
 
     _render() {
         const block = this.render();
-        // Это небезопасный метод для упрощения логики
-        // Используйте шаблонизатор из npm или напишите свой безопасный
-        // Нужно компилировать не в строку (или делать это правильно),
-        // либо сразу превращать в DOM-элементы и возвращать из compile DOM-ноду
         this._removeEvents();
         this._element.innerHTML = '';
-        // @ts-ignore
         this._element.append(block);
         this._addEvents();
         this.addAttribute();
@@ -200,8 +192,9 @@ class Block {
         });
     }
 
-    // Переопределяется пользователем. Необходимо вернуть разметку
-    render() {}
+    render() {
+        return '';
+    }
 
     getContent() {
         return this.element;
@@ -218,9 +211,6 @@ class Block {
                 if (target[prop] !== val) {
                     self._setUpdate = true;
                 }
-                // if (target[prop].attr !== val.attr) {
-                //     self._setUpdate = true;
-                // }
                 target[prop] = val;
                 return true;
             },
@@ -232,10 +222,7 @@ class Block {
 
     // eslint-disable-next-line class-methods-use-this
     _createDocumentElement(tagName) {
-        // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-        const element = document.createElement(tagName);
-        // element.setAttribute('data-id', this._id);
-        return element;
+        return document.createElement(tagName);
     }
 
     show() {

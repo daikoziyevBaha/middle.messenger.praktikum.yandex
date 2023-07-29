@@ -1,28 +1,26 @@
 import CameraImg from '../../static/images/camera-image.png';
 
 export default `
-    <div class="chat-details">
         <div class="chat-details__header">
             <div class="user-block">
                 <div class="user-block__avatar">
                     {{{avatar}}}
                 </div>
                 <div class="user-block__name">
-                    Vadim
+                    {{username}}
                 </div>
             </div>
             <button 
                 class="chat-options"
-                onclick="chat.handleOpenChatOptions()"
             >
                 <div class="chat-options__window" id="chat-options-window">
-                    <div class="option" onclick="chat.handleOpenAddUserModal()">
+                    <div class="option">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                           <circle cx="11" cy="11" r="10.25" stroke="#3369F3" stroke-width="1.5"/>
                         </svg>
                         <p class="option__text">Добавить пользователя</p>
                     </div>
-                    <div class="option" onclick="chat.handleOpenDeleteUserModal()">
+                    <div class="option">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                           <circle cx="11" cy="11" r="10.25" stroke="#3369F3" stroke-width="1.5"/>
                         </svg>
@@ -86,7 +84,6 @@ export default `
         <div class="chat-details__footer">
             <button 
                 class="attach-menu"
-                onclick="chat.handleOpenAttachMenu()"
             >
                 <div class="menu-options-window" id="attach-menu">
                     <div class="option">
@@ -141,25 +138,8 @@ export default `
                     21.3668C9.41894 20.1518 9.42334 18.1776 10.6437 16.9572L9.70092 16.0144Z" fill="#3369F3"/>
                 </svg>
             </button>
-            <input 
-                type="text" 
-                name="messate" 
-                class="message-input"
-                placeholder="Сообщение"
-            />
-            <button class="send-message-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <circle cx="14" cy="14" r="14" fill="#3369F3"/>
-                    <rect x="8" y="13.2" width="11" height="1.6" fill="white"/>
-                    <path d="M15 9L19 14L15 19" stroke="white" stroke-width="1.6"/>
-                </svg>
-            </button>
+            {{{sendMessageForm}}}
         </div>
-        <div class="add-user-modal" id="add-user-modal">
-            {{{addUserModal}}}
-        </div>
-        <div class="delete-user-modal" id="delete-user-modal">
-            {{{deleteUserModal}}}
-        </div>
-    </div>
+        {{{addUserModal}}}
+        {{{deleteUserModal}}}
 `;

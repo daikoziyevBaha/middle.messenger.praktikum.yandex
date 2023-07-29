@@ -22,7 +22,7 @@ class LoginPage extends Block {
 
 export default function getLoginPage() {
     const loginInput = new OutlinedInput({
-        label: 'Login',
+        label: 'Логин',
         error: '',
         attr: {
             class: 'text-field',
@@ -48,7 +48,7 @@ export default function getLoginPage() {
         }),
     });
     const passwordInput = new OutlinedInput({
-        label: 'Password',
+        label: 'Пароль',
         attr: {
             class: 'text-field',
         },

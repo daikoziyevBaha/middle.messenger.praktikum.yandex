@@ -1,33 +1,18 @@
 import './RegisterPage.scss';
 import registerPageTmpl from './RegisterPage.tmpl';
 import Block from '../../components/Block/Block';
-import Modal from "../../components/Modal/Modal";
-import OutlinedInput from "../../components/OutlinedInput/OutlinedInput";
-import Input from "../../ui/Input/Input";
-import validateLogin from "../../utils/validators/validateLogin";
-import validateEmail from "../../utils/validators/validateEmail";
-import validateName from "../../utils/validators/validateName";
-import validatePhoneNumber from "../../utils/validators/validatePhone";
-import validatePassword from "../../utils/validators/validatePassword";
-import Button from "../../components/Button/Button";
-import Link from "../../components/Link/Link";
-import RegisterForm from "../../components/Forms/RegisterForm/RegisterForm";
-
-const getValidator = {
-    email: validateEmail,
-    login: validateLogin,
-    first_name: validateName,
-    last_name: validateName,
-    phone: validatePhoneNumber,
-    password: validatePassword,
-};
-
-const isValid = (name: string, value: File | string): boolean => {
-    if (getValidator[name](value)) {
-        return true;
-    }
-    return false;
-};
+import Modal from '../../components/Modal/Modal';
+import OutlinedInput from '../../components/OutlinedInput/OutlinedInput';
+import Input from '../../ui/Input/Input';
+import validateLogin from '../../utils/validators/validateLogin';
+import validateEmail from '../../utils/validators/validateEmail';
+import validateName from '../../utils/validators/validateName';
+import validatePhoneNumber from '../../utils/validators/validatePhone';
+import validatePassword from '../../utils/validators/validatePassword';
+import Button from '../../components/Button/Button';
+import Link from '../../components/Link/Link';
+import RegisterForm from '../../components/Forms/RegisterForm/RegisterForm';
+import isValid from '../../utils/validators';
 
 class RegisterPage extends Block {
     constructor(props) {
@@ -325,5 +310,4 @@ export default function getRegisterPage() {
         },
         registerModal,
     });
-    // return registerModal;
 }

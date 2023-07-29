@@ -1,0 +1,91 @@
+.chat {
+  padding: .75rem 0;
+  display: flex;
+  gap: .62rem;
+  border-bottom: 1px solid #EAEAEA;
+  background: inherit;
+
+  &:hover {
+    background: #E4EDFD;
+  }
+
+  &:first-child {
+    border-top: 1px solid #EAEAEA;
+  }
+
+  &__avatar-block {
+    width: 2.9375rem;
+    height: 2.9375rem;
+    flex: none;
+  }
+  &__content {
+    display: block;
+    width: 100%;
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .25rem;
+  }
+  &__name {
+    max-width: 12.0625rem;
+    color: #1E1E1E;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 0.8125rem;
+  }
+  &__date {
+    color: #999;
+    font-size: 0.5625rem;
+    font-weight: 500;
+    line-height: 0.8125rem;
+  }
+  &__body {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__message {
+    max-width: 12.0625rem;
+    word-break: break-all;
+    color: #999;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0.9375rem;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  &__unchecked-messages {
+    align-self: flex-end;
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  background: #EFEFEF;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.badge {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3369F3;
+  border-radius: 50%;
+
+  &__value {
+    color: #FFF;
+    font-size: 0.6875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0.75rem;
+  }
+}

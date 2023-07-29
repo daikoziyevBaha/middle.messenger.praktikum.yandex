@@ -1,0 +1,42 @@
+.change-avatar-form {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  &__label {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 0 2.5rem 0;
+    color: #1E1E1E;
+    &-error {
+      color: red;
+    }
+  }
+
+  &__field {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .87rem;
+    width: 100%;
+  }
+
+  &__required {
+    color: #FF2F2F;
+    text-align: center;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 11px;
+  }
+}

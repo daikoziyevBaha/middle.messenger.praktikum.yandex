@@ -1,0 +1,126 @@
+.profile-container {
+  width: 100%;
+  height: 100%;
+}
+.profile {
+  height: 100%;
+  width: 40%;
+  margin: auto;
+  padding-top: 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__submit {
+    width: 60%;
+    margin-top: 60px;
+  }
+
+  &__name {
+    color: #1E1E1E;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    margin-bottom: 60px;
+    align-self: center;
+  }
+  &__change-data {
+    padding-bottom: .63rem;
+    width: 100%;
+    border-bottom: 1.5px solid #EAEAEA;
+    margin-bottom: 10px;
+  }
+  &__avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #EFEFEF;
+    justify-self: center;
+    margin-bottom: 21px;
+    cursor: pointer;
+    position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__text {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 12;
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+        &:hover {
+          fill: #000;
+          opacity: 0.5;
+        }
+    }
+  }
+
+
+.user-data {
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__element {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: .63rem;
+    border: none;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__label {
+    color: #1E1E1E;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 13px;
+  }
+  &__value {
+    color: #999;
+    text-align: right;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 13px;
+    border: none;
+  }
+}
+
+.link {
+  align-self: flex-start;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.8125rem;
+  &_red {
+    color: red;
+  }
+}
+
+.change-avatar-window {
+  display: none;
+}

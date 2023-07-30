@@ -26,6 +26,7 @@ class ProfileEditPage extends Block {
 export default function getProfileEditPage() {
     const emailInput = new StraightInput({
         label: 'Почта',
+        error: '',
         attr: {
             value: '',
             class: 'straight-label',
@@ -113,7 +114,7 @@ export default function getProfileEditPage() {
         input: new Input({
             attr: {
                 class: 'straight-label__value',
-                name: 'last_name',
+                name: 'second_name',
                 value: '',
                 placeholder: 'Hayam',
             },
@@ -195,7 +196,7 @@ export default function getProfileEditPage() {
                         error: 'Неверное имя',
                     });
                 }
-                if (!isValid('last_name', data.last_name)) {
+                if (!isValid('second_name', data.second_name)) {
                     valid = false;
                     surnameInput.setProps({
                         error: 'Неверная фамилия',

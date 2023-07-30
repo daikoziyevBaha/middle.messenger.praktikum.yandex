@@ -8,7 +8,7 @@ const getValidator = {
     email: validateEmail,
     login: validateLogin,
     first_name: validateName,
-    last_name: validateName,
+    second_name: validateName,
     phone: validatePhoneNumber,
     password: validatePassword,
 };

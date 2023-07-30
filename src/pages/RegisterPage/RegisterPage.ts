@@ -114,7 +114,7 @@ export default function getRegisterPage() {
         input: new Input({
             attr: {
                 class: 'text-field__input',
-                name: 'last_name',
+                name: 'second_name',
                 value: '',
                 placeholder: ' ',
             },
@@ -183,6 +183,7 @@ export default function getRegisterPage() {
                     passwordInput.setProps({
                         error,
                         attr: {
+                            // @ts-ignore
                             ...passwordInput.props.attr,
                             value: event.target.value,
                         },
@@ -209,7 +210,7 @@ export default function getRegisterPage() {
                 blur: (event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    // console.log(passwordInput.props.attr, event.target.value);
+                    // @ts-ignore
                     if (passwordInput.props.attr.value !== event.target.value) {
                         passwordConfirmationInput.setProps({ error: 'Пароли не совпадают' });
                     } else {
@@ -266,7 +267,7 @@ export default function getRegisterPage() {
                         error: 'Неверное имя',
                     });
                 }
-                if (!isValid('last_name', data.last_name)) {
+                if (!isValid('second_name', data.second_name)) {
                     valid = false;
                     surnameInput.setProps({
                         error: 'Неверная фамилия',

@@ -2,11 +2,7 @@ import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from '../../utils/EventBus';
 
-type BlockProps = {
-    [key: string]: any
-}
-
-class Block {
+abstract class Block<Props extends Record<string, any> = unknown> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -16,25 +12,24 @@ class Block {
 
     _element: HTMLElement | null = null;
 
-    _meta: {tagName: string; props: BlockProps } = null;
+    _meta: {tagName: string; props: Props } = null;
 
     eventBus: () => EventBus;
 
-    props: BlockProps;
+    props: Props;
 
     _id = null;
 
-    children: BlockProps;
+    children: Props;
 
     _setUpdate = false;
 
-    constructor(tagName: string = 'div', propsAndChildren: BlockProps = {}) {
-        const { children, props } = this._getChildren(propsAndChildren);
+    protected constructor(tagName: string = 'div', propsAndChildren: Props = {} as Props) {
+        const { children, props = {} as Props } = this._getChildren(propsAndChildren);
         const eventBus = new EventBus();
-
         this._meta = {
             tagName,
-            props,
+            props: props as Props,
         };
         this._id = makeUUID();
         this.children = this._makePropsProxy({ ...children });
@@ -47,7 +42,7 @@ class Block {
     }
 
     // eslint-disable-next-line class-methods-use-this
-    _getChildren(propsAndChildren: BlockProps) {
+    _getChildren(propsAndChildren: Props) {
         const children = {};
         const props = {};
 
@@ -125,14 +120,14 @@ class Block {
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
 
-    _componentDidUpdate(oldProps: BlockProps, newProps: BlockProps) {
+    _componentDidUpdate(oldProps: Props, newProps: Props) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (response) {
             this._render();
         }
     }
 
-    componentDidUpdate(oldProps: BlockProps, newProps: BlockProps) {
+    componentDidUpdate(oldProps: Props, newProps: Props) {
         return oldProps !== newProps;
     }
 
@@ -185,7 +180,7 @@ class Block {
     }
 
     addAttribute() {
-        const { attr = {} } = this.props;
+        const { attr = {} as Props } = this.props;
 
         Object.entries(attr).forEach(([key, value]) => {
             this._element.setAttribute(key, String(value));

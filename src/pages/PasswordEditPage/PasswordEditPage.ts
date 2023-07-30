@@ -73,6 +73,7 @@ export default function getPasswordEditPage() {
                     newPasswordInput.setProps({
                         error,
                         attr: {
+                            // @ts-ignore
                             ...newPasswordInput.props.attr,
                             value: event.target.value,
                         },
@@ -99,6 +100,7 @@ export default function getPasswordEditPage() {
                 blur: (event) => {
                     event.preventDefault();
                     event.stopPropagation();
+                    // @ts-ignore
                     if (newPasswordInput.props.attr.value !== event.target.value) {
                         confirmNewPasswordInput.setProps({ error: 'Пароли не совпадают' });
                     } else {

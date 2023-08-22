@@ -1,6 +1,6 @@
 import { v4 as makeUUID } from 'uuid';
-import Handlebars from 'handlebars';
 import EventBus from '../../utils/EventBus';
+import { compile } from '../../utils/Handlebars';
 
 abstract class Block<Props extends Record<string, any> = unknown> {
     static EVENTS = {
@@ -9,6 +9,8 @@ abstract class Block<Props extends Record<string, any> = unknown> {
         FLOW_CDU: 'flow:component-did-update',
         FLOW_RENDER: 'flow:render',
     };
+
+    componentName: string;
 
     _element: HTMLElement | null = null;
 
@@ -20,21 +22,23 @@ abstract class Block<Props extends Record<string, any> = unknown> {
 
     _id = null;
 
-    children: Props;
+    children: Record<string, any>;
 
     _setUpdate = false;
 
+    refs: {[key: string]: HTMLElement} = {};
+
     protected constructor(tagName: string = 'div', propsAndChildren: Props = {} as Props) {
-        const { children, props = {} as Props } = this._getChildren(propsAndChildren);
-        const eventBus = new EventBus();
+        // const { children, props = {} as Props } = this._getChildren(propsAndChildren);
         this._meta = {
             tagName,
-            props: props as Props,
+            props: propsAndChildren as Props,
         };
         this._id = makeUUID();
-        this.children = this._makePropsProxy({ ...children });
-        this.props = this._makePropsProxy({ ...props, __id: this._id });
+        // this.children = this._makePropsProxy({ ...children });
+        this.props = this._makePropsProxy({ ...propsAndChildren, __id: this._id });
 
+        const eventBus = new EventBus();
         this.eventBus = () => eventBus;
 
         this._registerEvents(eventBus);
@@ -58,35 +62,27 @@ abstract class Block<Props extends Record<string, any> = unknown> {
     }
 
     compile(template, props) {
-        const propsAndStubs = { ...props };
-        const blockArr = [];
+        // eslint-disable-next-line no-unused-vars
+        const { html, children, refs } = compile(template, props);
+        this.children = children.map((child) => child.component as Block<object>);
 
-        Object.entries(this.children).forEach(([key, child]) => {
-            propsAndStubs[key] = `<div data-id="${child.id}"></div>`;
-        });
-        Object.entries(this.props).forEach(([key, prop]) => {
-            if (Array.isArray(prop)) {
-                prop.forEach((item, index) => {
-                    if (item instanceof Block) {
-                        blockArr.push(item);
-                        propsAndStubs[key][index] = `<div data-id="${item._id}"></div>`;
-                    }
-                });
-            }
-        });
-        const fragment = this._createDocumentElement('template');
-        fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
-        if (blockArr.length > 0) {
-            blockArr.forEach((item) => {
-                const stub = fragment.content.querySelector(`[data-id="${item._id}"]`);
-                stub.replaceWith(item.getContent());
-            });
+        const templateElement = document.createElement('template');
+        templateElement.innerHTML = html;
+        const fragment = templateElement.content;
+
+        this.refs = Array.from(fragment.querySelectorAll('[ref]')).reduce((list, element) => {
+            const key = element.getAttribute('ref');
+            list[key] = element;
+            element.removeAttribute('ref');
+            return list;
+        }, refs) as {[key: string]: HTMLElement};
+
+        children.forEach((child) => child.embed(fragment));
+
+        if (!fragment.firstElementChild || fragment.firstElementChild?.nextElementSibling) {
+            throw new Error('Only one root supported');
         }
-        Object.values(this.children).forEach((child) => {
-            const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
-            stub.replaceWith(child.getContent());
-        });
-        return fragment.content;
+        return fragment.firstElementChild;
     }
 
     _registerEvents(eventBus: EventBus) {
@@ -174,22 +170,29 @@ abstract class Block<Props extends Record<string, any> = unknown> {
         const block = this.render();
         this._removeEvents();
         this._element.innerHTML = '';
-        this._element.append(block);
-        this._addEvents();
+        if (this._element) {
+            this._element!.replaceWith(block);
+        }
+        if (typeof block === 'object') {
+            this._element = block;
+        }
+        this.mountComponent();
         this.addAttribute();
+    }
+
+    mountComponent() {
+        this._addEvents();
+        this.componentDidMount();
     }
 
     addAttribute() {
         const { attr = {} as Props } = this.props;
-
         Object.entries(attr).forEach(([key, value]) => {
             this._element.setAttribute(key, String(value));
         });
     }
 
-    render() {
-        return '';
-    }
+    render() { return ''; }
 
     getContent() {
         return this.element;

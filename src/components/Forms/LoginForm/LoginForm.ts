@@ -4,7 +4,9 @@ import Block from '../../Block/Block';
 
 export default class LoginForm extends Block {
     constructor(props) {
-        super('form', props);
+        super('form',
+            props,
+        );
     }
 
     render() {

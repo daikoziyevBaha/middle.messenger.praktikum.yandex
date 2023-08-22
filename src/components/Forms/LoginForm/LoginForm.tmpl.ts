@@ -6,7 +6,6 @@ export default `
     <fieldset class="auth-form__field">
         {{{passwordInput}}}
     </fieldset>
-    
     <div class="auth-form__actions">
         {{{authButton}}}
     </div>

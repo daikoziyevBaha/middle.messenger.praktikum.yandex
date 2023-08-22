@@ -1,5 +1,7 @@
 export default `
+<nav class="navigation">
     <ul class="list-item">
+        {{{ Input class="input-test" ref="input" }}}
         <li class="list-item__element">
             <a href="/login" class="link-navigation"> '/login': LoginPage</a>
         </li>
@@ -28,4 +30,5 @@ export default `
             <a href="/500" class="link-navigation">'/500': ServerError</a>
         </li>
     </ul>
+</nav>
 `;

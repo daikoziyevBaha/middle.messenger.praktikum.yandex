@@ -35,9 +35,9 @@ abstract class Block<Props extends Record<string, any> = unknown> {
             props: propsAndChildren as Props,
         };
         this._id = makeUUID();
+        this.children = [];
         // this.children = this._makePropsProxy({ ...children });
         this.props = this._makePropsProxy({ ...propsAndChildren, __id: this._id });
-
         const eventBus = new EventBus();
         this.eventBus = () => eventBus;
 
@@ -65,7 +65,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
         // eslint-disable-next-line no-unused-vars
         const { html, children, refs } = compile(template, props);
         this.children = children.map((child) => child.component as Block<object>);
-
+        console.log('params', this.children, this.refs);
         const templateElement = document.createElement('template');
         templateElement.innerHTML = html;
         const fragment = templateElement.content;
@@ -104,10 +104,13 @@ abstract class Block<Props extends Record<string, any> = unknown> {
 
     _componentDidMount() {
         this.componentDidMount();
-
-        Object.values(this.children).forEach((child) => {
+        this.children.forEach((child) => {
             child.dispatchComponentDidMount();
         });
+        // OLD VERSION
+        // Object.values(this.children).forEach((child) => {
+        //     child.dispatchComponentDidMount();
+        // });
     }
 
     componentDidMount() {}
@@ -148,12 +151,15 @@ abstract class Block<Props extends Record<string, any> = unknown> {
     };
 
     get element() {
+        if (!this._element) {
+            this.render();
+        }
         return this._element;
     }
 
     _addEvents() {
         const { events = {} } = this.props;
-
+        console.log("refs", this.refs);
         Object.keys(events).forEach((eventName) => {
             this._element.addEventListener(eventName, events[eventName]);
         });
@@ -178,6 +184,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
         }
         this.mountComponent();
         this.addAttribute();
+        console.log(this.refs, this.children);
     }
 
     mountComponent() {
@@ -186,10 +193,14 @@ abstract class Block<Props extends Record<string, any> = unknown> {
     }
 
     addAttribute() {
-        const { attr = {} as Props } = this.props;
-        Object.entries(attr).forEach(([key, value]) => {
+        // const { attr = {} as Props } = this.props;
+        Object.entries(this.props).forEach(([key, value]) => {
             this._element.setAttribute(key, String(value));
         });
+        // OLD version
+        // Object.entries(attr).forEach(([key, value]) => {
+        //     this._element.setAttribute(key, String(value));
+        // });
     }
 
     render() { return ''; }

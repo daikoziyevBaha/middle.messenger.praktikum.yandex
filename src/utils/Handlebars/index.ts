@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+import Handlebars, { HelperOptions } from 'handlebars';
 
 export function compile(template: string, context: object) {
     const data = {
@@ -16,8 +16,9 @@ export function registerComponent(Component: any) {
         throw `This ${Component.componentName} component already registered`;
     }
 
-    Handlebars.registerHelper(Component.componentName, ({ hash, data, fn }) => {
+    Handlebars.registerHelper(Component.componentName, function (this: unknown, { hash, data, fn }: HelperOptions) {
         const component = new Component(hash);
+        console.log('comp', component);
         uniqueId += 1;
         const dataAttribute = `data-component-hbs-id="${uniqueId}"`;
 
@@ -25,14 +26,14 @@ export function registerComponent(Component: any) {
             (data.root__refs = data.root__refs || {})[hash.ref] = component;
         }
 
-        (data.root__children = data.root__children || []).push({
+        (data.root.__children = data.root.__children || []).push({
             component,
             embed(node: DocumentFragment) {
                 const placeholder = node.querySelector(`[${dataAttribute}]`);
                 if (!placeholder) {
                     throw new Error(`Can not find data-id for component ${component.componentName}`);
                 }
-                const element = component.element();
+                const { element } = component;
                 element.append(...Array.from(placeholder.childNodes));
                 placeholder.replaceWith(element);
             },

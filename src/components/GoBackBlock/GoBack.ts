@@ -1,8 +1,8 @@
 import GoBackTmpl from './GoBack.tmpl';
 import './GoBack.scss';
-import Block from '../Block/Block';
+import OldBlock from '../Block/OldBlock';
 
-export default class GoBack extends Block {
+export default class GoBack extends OldBlock {
     constructor(props) {
         super('div', props);
     }

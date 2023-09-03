@@ -1,21 +1,25 @@
+import Handlebars from "handlebars";
 import './Navigation.scss';
 import NavigationPageTmpl from './NavigationPage.tmpl';
-import Block from '../../components/Block/Block';
+import Block from "../../utils/Block";
 
 class NavigationPage extends Block {
-    constructor(props) {
-        super('nav', props);
+    init() {
+        this.props.links = [
+            {
+                href: '/sign-in',
+                text: '\'/login\': LoginPage',
+            },
+            {
+                href: '/sign-up',
+                text: '\'/sign-up\': RegisterPage',
+            },
+        ];
     }
 
     render() {
-        return this.compile(NavigationPageTmpl, this.props);
+        return this.compile(Handlebars.compile(NavigationPageTmpl), this.props);
     }
 }
 
-export default function getNavigationPage() {
-    return new NavigationPage({
-        attr: {
-            class: 'navigation',
-        },
-    });
-}
+export default NavigationPage;

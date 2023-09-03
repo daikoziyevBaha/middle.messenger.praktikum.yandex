@@ -1,7 +1,7 @@
-import Block from '../Block/Block';
+import OldBlock from '../Block/OldBlock';
 import ChatListTmpl from './ChatList.tmpl';
 
-export default class ChatList extends Block {
+export default class ChatList extends OldBlock {
     constructor(props) {
         super('div', props);
     }

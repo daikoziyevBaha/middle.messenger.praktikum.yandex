@@ -1,6 +1,6 @@
 import './LoginPage.scss';
 import loginPageTmpl from './LoginPage.tmpl';
-import Block from '../../components/Block/Block';
+import OldBlock from '../../components/Block/OldBlock';
 import Modal from '../../components/Modal/Modal';
 import LoginForm from '../../components/Forms/LoginForm/LoginForm';
 import OutlinedInput from '../../components/OutlinedInput/OutlinedInput';
@@ -10,7 +10,7 @@ import Link from '../../components/Link/Link';
 import validateLogin from '../../utils/validators/validateLogin';
 import validatePassword from '../../utils/validators/validatePassword';
 
-class LoginPage extends Block {
+class LoginPage extends OldBlock {
     constructor(props) {
         super('div', props);
     }

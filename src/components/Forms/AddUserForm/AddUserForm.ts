@@ -1,8 +1,8 @@
 import './AddUserForm.scss';
-import Block from '../../Block/Block';
+import OldBlock from '../../Block/OldBlock';
 import AddUserFormTmpl from './AddUserForm.tmpl';
 
-export default class AddUserForm extends Block {
+export default class AddUserForm extends OldBlock {
     constructor(props) {
         super('form', props);
     }

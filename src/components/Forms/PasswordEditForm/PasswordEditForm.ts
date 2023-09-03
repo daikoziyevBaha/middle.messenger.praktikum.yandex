@@ -1,8 +1,8 @@
-import Block from '../../Block/Block';
+import OldBlock from '../../Block/OldBlock';
 import './PasswordEditForm.scss';
 import PasswordEditFormTmpl from './PasswordEditForm.tmpl';
 
-export default class PasswordEditForm extends Block {
+export default class PasswordEditForm extends OldBlock {
     constructor(props) {
         super('form', props);
     }

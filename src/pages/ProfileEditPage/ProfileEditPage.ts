@@ -1,6 +1,6 @@
 import './ProfileEditPage.scss';
 import Avatar from '../../components/Avatar/Avatar';
-import Block from '../../components/Block/Block';
+import OldBlock from '../../components/Block/OldBlock';
 import ProfileEditPageTmpl from './ProfileEditPage.tmpl';
 import GoBack from '../../components/GoBackBlock/GoBack';
 import Input from '../../ui/Input/Input';
@@ -13,7 +13,7 @@ import validatePhoneNumber from '../../utils/validators/validatePhone';
 import Button from '../../components/Button/Button';
 import isValid from '../../utils/validators';
 
-class ProfileEditPage extends Block {
+class ProfileEditPage extends OldBlock {
     constructor(props) {
         super('div', props);
     }

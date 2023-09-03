@@ -1,13 +1,12 @@
+import Handlebars from "handlebars";
 import ModalTmpl from './Modal.tmpl';
 import './Modal.scss';
-import Block from '../Block/Block';
+import Block from "../../utils/Block";
 
 export default class Modal extends Block {
-    constructor(props) {
-        super('div', props);
-    }
+    static template = Handlebars.compile(ModalTmpl);
 
     render() {
-        return this.compile(ModalTmpl, this.props);
+        return this.compile(Modal.template, this.props);
     }
 }

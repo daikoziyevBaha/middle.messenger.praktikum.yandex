@@ -1,6 +1,6 @@
 import './ProfilePage.scss';
 import ProfilePageTmpl from './ProfilePage.tmpl';
-import Block from '../../components/Block/Block';
+import OldBlock from '../../components/Block/OldBlock';
 import ChangeAvatarForm from '../../components/Forms/ChangeAvatarForm/ChangeAvatar';
 import FileInput from '../../components/FileInput/FileInput';
 import Input from '../../ui/Input/Input';
@@ -10,7 +10,7 @@ import GoBack from '../../components/GoBackBlock/GoBack';
 import Avatar from '../../components/Avatar/Avatar';
 import Link from '../../components/Link/Link';
 
-class ProfilePage extends Block {
+class ProfilePage extends OldBlock {
     constructor(props) {
         super('div', props);
     }

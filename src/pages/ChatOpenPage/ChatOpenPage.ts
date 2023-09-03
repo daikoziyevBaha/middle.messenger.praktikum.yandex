@@ -1,7 +1,7 @@
 import './ChatOpenPage.scss';
 import ChatList from '../../components/ChatList/ChatList';
 import ChatOpenPageTmpl from './ChatOpenPage.tmpl';
-import Block from '../../components/Block/Block';
+import OldBlock from '../../components/Block/OldBlock';
 import { data } from '../../constants/MockData';
 import ChatItem from '../../components/ChatItem/ChatItem';
 import AvatarShort from '../../components/AvatarShort/AvatarShort';
@@ -15,7 +15,7 @@ import AddUserForm from '../../components/Forms/AddUserForm/AddUserForm';
 import ModalBlock from '../../components/ModalBlock/ModalBlock';
 import DeleteUserForm from '../../components/Forms/DeleteUserForm/DeleteUserForm';
 
-class ChatOpenPage extends Block {
+class ChatOpenPage extends OldBlock {
     constructor(props) {
         super('div', props);
     }

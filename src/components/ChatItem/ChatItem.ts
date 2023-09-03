@@ -1,8 +1,8 @@
 import ChatItemTmpl from './ChatItem.tmpl';
 import './ChatItem.scss';
-import Block from '../Block/Block';
+import OldBlock from '../Block/OldBlock';
 
-export default class ChatItem extends Block {
+export default class ChatItem extends OldBlock {
     constructor(props) {
         super('div', props);
     }

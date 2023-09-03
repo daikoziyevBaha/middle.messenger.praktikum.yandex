@@ -1,8 +1,8 @@
-import Block from '../../Block/Block';
+import OldBlock from '../../Block/OldBlock';
 import SendMessageFormTmpl from './SendMessageForm.tmpl';
 import './SendMessageForm.scss';
 
-export default class SendMessageForm extends Block {
+export default class SendMessageForm extends OldBlock {
     constructor(props) {
         super('form', props);
     }

@@ -1,8 +1,8 @@
 import './DeleteUserForm.scss';
-import Block from '../../Block/Block';
+import OldBlock from '../../Block/OldBlock';
 import DeleteUserFormTmpl from './DeleteUserForm.tmpl';
 
-export default class DeleteUserForm extends Block {
+export default class DeleteUserForm extends OldBlock {
     constructor(props) {
         super('form', props);
     }

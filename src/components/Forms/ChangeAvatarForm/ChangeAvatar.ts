@@ -1,8 +1,8 @@
 import './ChangeAvatar.scss';
 import ChangeAvatarTmpl from './ChangeAvatar.tmpl';
-import Block from '../../Block/Block';
+import OldBlock from '../../Block/OldBlock';
 
-export default class ChangeAvatarForm extends Block {
+export default class ChangeAvatarForm extends OldBlock {
     constructor(props) {
         super('form', props);
     }

@@ -1,8 +1,8 @@
-import Block from '../../Block/Block';
+import OldBlock from '../../Block/OldBlock';
 import ProfileEditTmpl from './ProfileEdit.tmplForm';
 import './ProfileEditForm.scss';
 
-export default class ProfileEditForm extends Block {
+export default class ProfileEditForm extends OldBlock {
     constructor(props) {
         super('form', props);
     }

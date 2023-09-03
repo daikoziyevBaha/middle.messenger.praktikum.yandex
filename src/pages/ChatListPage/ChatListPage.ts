@@ -1,12 +1,12 @@
 import './ChatListPage.scss';
 import ChatListPageTmpl from './ChatListPage.tmpl';
-import Block from '../../components/Block/Block';
+import OldBlock from '../../components/Block/OldBlock';
 import ChatItem from '../../components/ChatItem/ChatItem';
 import ChatList from '../../components/ChatList/ChatList';
 import AvatarShort from '../../components/AvatarShort/AvatarShort';
 import { data } from '../../constants/MockData';
 
-class ChatListPage extends Block {
+class ChatListPage extends OldBlock {
     constructor(props) {
         super('div', props);
     }

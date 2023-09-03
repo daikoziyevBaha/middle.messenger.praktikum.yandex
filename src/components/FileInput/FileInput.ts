@@ -1,8 +1,8 @@
 import './FileInput.scss';
 import FileInputTmpl from './FileInput.tmpl';
-import Block from '../Block/Block';
+import OldBlock from '../Block/OldBlock';
 
-export default class FileInput extends Block {
+export default class FileInput extends OldBlock {
     constructor(props) {
         super('label', props);
     }

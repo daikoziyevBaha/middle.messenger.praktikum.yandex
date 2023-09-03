@@ -1,8 +1,8 @@
 import './Avatar.scss';
 import AvatarTmpl from './Avatar.tmpl';
-import Block from '../Block/Block';
+import OldBlock from '../Block/OldBlock';
 
-export default class Avatar extends Block {
+export default class Avatar extends OldBlock {
     constructor(props) {
         super('div', props);
     }

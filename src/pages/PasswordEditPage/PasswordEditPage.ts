@@ -1,6 +1,6 @@
 import './PasswordEditPage.scss';
 import GoBack from '../../components/GoBackBlock/GoBack';
-import Block from '../../components/Block/Block';
+import OldBlock from '../../components/Block/OldBlock';
 import ProfileEditPageTmpl from '../ProfileEditPage/ProfileEditPage.tmpl';
 import Avatar from '../../components/Avatar/Avatar';
 import StraightInput from '../../components/StraightInput/StraightInput';
@@ -11,7 +11,7 @@ import Button from '../../components/Button/Button';
 import validatePassword from '../../utils/validators/validatePassword';
 import isValid from '../../utils/validators';
 
-class PasswordEditPage extends Block {
+class PasswordEditPage extends OldBlock {
     constructor(props) {
         super('div', props);
     }

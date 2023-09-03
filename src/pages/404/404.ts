@@ -1,8 +1,8 @@
 import './404.scss';
 import NotFoundTmpl from './404.tmpl';
-import Block from '../../components/Block/Block';
+import OldBlock from '../../components/Block/OldBlock';
 
-export default class NotFound extends Block {
+export default class NotFound extends OldBlock {
     constructor(props) {
         super('div', props);
     }

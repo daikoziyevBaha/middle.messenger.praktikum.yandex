@@ -1,8 +1,8 @@
 import ModalTmpl from './ModalBlock.tmpl';
 import './ModalBlock.scss';
-import Block from '../Block/Block';
+import OldBlock from '../Block/OldBlock';
 
-export default class ModalBlock extends Block {
+export default class ModalBlock extends OldBlock {
     constructor(props) {
         super('div', props);
     }

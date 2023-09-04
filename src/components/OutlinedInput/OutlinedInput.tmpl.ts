@@ -1,6 +1,6 @@
 export default `
-    <label>
-        {{{ Input type=type class="text-field__input" value=value placeholder=placeholder name=name }}}
+    <label class="text-field">
+        {{{ Input type=type class="text-field__input" value=value placeholder=placeholder name=name onBlur=onBlur }}}
         <span class="text-field__label">
             {{label}}
         </span>

@@ -10,6 +10,7 @@
 import NavigationPage from "../pages/Navigation/NavigationPage";
 import Block from "../utils/Block";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
 
 type Routes = {
     [key: string]: typeof Block
@@ -17,6 +18,7 @@ type Routes = {
 const routes: Routes = {
     '/': NavigationPage,
     '/sign-up': RegisterPage,
+    '/sign-in': LoginPage,
 };
 
 export default routes;

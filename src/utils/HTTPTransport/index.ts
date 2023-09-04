@@ -9,28 +9,34 @@ function queryStringify(data) {
     return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`, '?');
 }
 
-type Options = {
+export type Options = {
     timeout?: number;
     method?: string;
     headers?: {
         [key: string]: string;
     };
-    data?: Document;
+    data?: any;
 }
 
 export default class HTTPTransport {
-    get = (url, options = { timeout: 0 }) => this.request(url, { ...options, method: METHODS.GET }, options?.timeout);
+    static API_URL = 'https://ya-praktikum.tech/api/v2';
 
-    post = (url, options = { timeout: 0 }) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+    protected endpoint: string;
 
-    put = (url, options = { timeout: 0 }) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+    constructor(endpoint: string) {
+        this.endpoint = `${HTTPTransport.API_URL}/${endpoint}`;
+    }
 
-    delete = (url, options = { timeout: 0 }) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+    get = (url, options: Options = { timeout: 0 }): Promise<Response> => this.request(`${this.endpoint}${url}`, { ...options, method: METHODS.GET }, options?.timeout);
 
-    // eslint-disable-next-line class-methods-use-this
-    request = (url, options: Options, timeout = 5000) => {
+    post = (url, options: Options = { timeout: 0 }): Promise<Response> => this.request(`${this.endpoint}${url}`, { ...options, method: METHODS.POST }, options.timeout);
+
+    put = (url, options: Options = { timeout: 0 }): Promise<Response> => this.request(`${this.endpoint}${url}`, { ...options, method: METHODS.PUT }, options.timeout);
+
+    delete = (url, options: Options = { timeout: 0 }): Promise<Response> => this.request(`${this.endpoint}${url}`, { ...options, method: METHODS.DELETE }, options.timeout);
+
+    request = (url, options: Options, timeout = 5000): Promise<Response> => {
         const { headers = {}, method, data } = options;
-
         return new Promise((resolve, reject) => {
             if (!method) {
                 // eslint-disable-next-line prefer-promise-reject-errors
@@ -48,13 +54,13 @@ export default class HTTPTransport {
                     : url,
             );
 
-            Object.keys(headers).forEach((key) => {
+            Object.keys(headers).forEach(key => {
                 xhr.setRequestHeader(key, headers[key]);
             });
 
             // eslint-disable-next-line func-names
             xhr.onload = function () {
-                resolve(xhr);
+                resolve(xhr.response);
             };
 
             xhr.onabort = reject;

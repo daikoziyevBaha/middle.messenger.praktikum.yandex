@@ -7,14 +7,15 @@ export default `
                     name=this.name 
                     type=this.type 
                     value=this.value 
-                    placeholder=" " 
+                    placeholder=" "
                     error=this.error 
-                    label=this.label 
+                    label=this.label
+                    onBlur=this.onBlur
                 }}}
             </fieldset>
         {{/each}}
         <div class="auth-form__actions">
-            {{{ Button class="button" type="submit" text="Зарегистрироваться" onClick=onSubmit }}}
+            {{{ Button class="button" type="submit" text="Зарегистрироваться"}}}
         </div>
         {{{ Link href="/sign-in" class="link" text="У меня есть аккаунт" }}}
     </form>

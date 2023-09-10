@@ -1,11 +1,17 @@
-import { Options } from "../HTTPTransport";
+import HTTPTransport from "../HTTPTransport";
 
-export default class BaseAPI {
-    create(data): Promise<Response> { throw new Error('Not implemented'); }
+export default abstract class BaseAPI {
+    protected http: HTTPTransport;
 
-    request(data): Promise<Response> { throw new Error('Not implemented'); }
+    protected constructor(endpoint: string) {
+        this.http = new HTTPTransport(endpoint);
+    }
 
-    update(): Promise<Response> { throw new Error('Not implemented'); }
+    public abstract create?(data: unknown): Promise<unknown>;
 
-    delete(): Promise<Response> { throw new Error('Not implemented'); }
+    public abstract read?(identifier?: string | number): Promise<unknown>;
+
+    public abstract update?(identifier: string | number, data: unknown): Promise<unknown>;
+
+    public abstract delete?(identifier: string | number): Promise<unknown>;
 }

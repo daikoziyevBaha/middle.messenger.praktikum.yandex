@@ -1,13 +1,12 @@
-import OldBlock from '../Block/OldBlock';
+import Handlebars from "handlebars";
 import StraightInputTmpl from './StraightInput.tmpl';
 import './StraightInput.scss';
+import Block from "../../utils/Block";
 
-export default class StraightInput extends OldBlock {
-    constructor(props) {
-        super('label', props);
-    }
+export default class StraightInput extends Block {
+    static template = Handlebars.compile(StraightInputTmpl);
 
     render() {
-        return this.compile(StraightInputTmpl, this.props);
+        return this.compile(StraightInput.template, this.props);
     }
 }

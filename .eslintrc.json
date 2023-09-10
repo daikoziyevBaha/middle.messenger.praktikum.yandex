@@ -3,6 +3,9 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "no-case-declarations": "off",
+    "prefer-promise-reject-errors": "off",
+    "max-classes-per-file": "off",
     "class-methods-use-this": "off",
     "no-trailing-spaces": "off",
     "quotes": ["off", "double", { "avoidEscape": true }],
@@ -17,7 +20,7 @@
     "@typescript-eslint/no-unused-vars": "off",
     "max-len": [1, 200],
     "max-params": [2, 3],
-    "indent": ["error", 4],
+    "indent": ["error", 4, { "SwitchCase": 1 }],
     "no-underscore-dangle": "off",
     "no-param-reassign": 0,
     "import/extensions": [

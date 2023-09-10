@@ -1,16 +1,15 @@
 import Route from "../Route";
 
-export default class Router {
-
-    static __instance: Router;
+class Router {
+    private static __instance: Router;
 
     routes: Route[] = [];
 
-    _currentRoute: Route | null;
+    private _currentRoute: Route | null;
 
-    history: any;
+    history: History;
 
-    _rootQuery: string;
+    private readonly _rootQuery: string;
 
     constructor(rootQuery) {
         if (Router.__instance) {
@@ -53,7 +52,7 @@ export default class Router {
     }
 
     go(pathname) {
-        window.history.pushState("", "", pathname);
+        this.history.pushState("", "", pathname);
         this._onRoute(pathname);
     }
 
@@ -69,3 +68,7 @@ export default class Router {
         return this.routes.find(route => route.match(pathname));
     }
 }
+
+const router = new Router("#app");
+
+export default router;

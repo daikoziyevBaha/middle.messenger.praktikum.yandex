@@ -1,13 +1,12 @@
+import Handlebars from "handlebars";
 import GoBackTmpl from './GoBack.tmpl';
 import './GoBack.scss';
-import OldBlock from '../Block/OldBlock';
+import Block from "../../utils/Block";
 
-export default class GoBack extends OldBlock {
-    constructor(props) {
-        super('div', props);
-    }
+export default class GoBack extends Block {
+    static template = Handlebars.compile(GoBackTmpl);
 
     render() {
-        return this.compile(GoBackTmpl, this.props);
+        return this.compile(GoBack.template, this.props);
     }
 }

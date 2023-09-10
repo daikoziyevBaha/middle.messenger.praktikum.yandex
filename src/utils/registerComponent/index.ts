@@ -28,7 +28,6 @@ function registerComponent(name: string, Component: typeof Block) {
                 stub.replaceWith(component.getContent()!);
             },
         });
-
         const contents = fn ? fn(this) : '';
 
         return `<div ${dataAttribute}>${contents}</div>`;

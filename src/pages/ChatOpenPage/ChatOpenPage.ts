@@ -70,7 +70,7 @@ export default function getChatOpenPage() {
         input: messageInput,
         submitButton,
         events: {
-            submit: (e) => {
+            submit: e => {
                 e.preventDefault();
                 e.stopPropagation();
                 const formData = new FormData(e.target);

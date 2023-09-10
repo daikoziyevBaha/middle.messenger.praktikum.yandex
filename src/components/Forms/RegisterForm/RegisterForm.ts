@@ -3,12 +3,11 @@ import RegisterFormTmpl from './RegisterForm.tmpl';
 import './RegisterForm.scss';
 import Block from "../../../utils/Block";
 import isValid, { validationErrors } from "../../../utils/validators";
-import UserAPI from "./api/register-api";
+import AuthController from "../../../controllers/AuthController";
+import { SignupData } from "../../../api/AuthApi";
 
 export default class RegisterForm extends Block {
     static template = Handlebars.compile(RegisterFormTmpl);
-
-    userController = new UserAPI();
 
     init() {
         this.props.fields = [
@@ -121,8 +120,8 @@ export default class RegisterForm extends Block {
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData);
             delete data.passwordConfirmation;
-            this.userController
-                .create(data);
+            AuthController
+                .signup(data as unknown as SignupData);
         } else {
             this.setProps({
                 fields: newFields,

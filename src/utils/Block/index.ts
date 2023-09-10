@@ -2,7 +2,7 @@ import { v4 as makeUUID } from 'uuid';
 import EventBus from '../EventBus';
 
 // Нельзя создавать экземпляр данного класса
-class Block {
+class Block<P extends Record<string, any> = any> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -119,7 +119,6 @@ class Block {
         if (!nextProps) {
             return;
         }
-
         Object.assign(this.props, nextProps);
     };
 
@@ -154,7 +153,6 @@ class Block {
         contextAndStubs.__children?.forEach(({ embed }: any) => {
             embed(temp.content);
         });
-
         return temp.content;
     }
 

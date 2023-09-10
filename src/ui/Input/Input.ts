@@ -1,4 +1,5 @@
 import Handlebars from "handlebars";
+import { v4 as makeUUID } from 'uuid';
 import Block from "../../utils/Block";
 import InputTmpl from "./Input.tmpl";
 
@@ -8,6 +9,7 @@ export default class Input extends Block {
     constructor(props) {
         super({
             ...props,
+            id: props.id || makeUUID(),
             events: {
                 blur: props.onBlur,
             },

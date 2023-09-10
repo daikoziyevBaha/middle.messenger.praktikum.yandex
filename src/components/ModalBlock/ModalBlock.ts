@@ -1,13 +1,25 @@
+import Handlebars from "handlebars";
 import ModalTmpl from './ModalBlock.tmpl';
 import './ModalBlock.scss';
-import OldBlock from '../Block/OldBlock';
+import Block from "../../utils/Block";
 
-export default class ModalBlock extends OldBlock {
-    constructor(props) {
-        super('div', props);
+export default class ModalBlock extends Block {
+    static template = Handlebars.compile(ModalTmpl);
+
+    init() {
+        this.props.display = this.props.open ? 'flex' : 'none';
+        this.props.events = {
+            click: e => {
+                e.stopPropagation();
+                if (e.target.id === "modal-window") {
+                    console.log("Modal window close");
+                    this.props.onClose();
+                }
+            },
+        };
     }
 
     render() {
-        return this.compile(ModalTmpl, this.props);
+        return this.compile(ModalBlock.template, this.props);
     }
 }

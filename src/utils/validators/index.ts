@@ -9,9 +9,12 @@ const getValidatorByName = {
     email: validateEmail,
     login: validateLogin,
     first_name: validateName,
+    display_name: validateName,
     second_name: validateName,
     phone: validatePhoneNumber,
     password: validatePassword,
+    oldPassword: validatePassword,
+    newPassword: validatePassword,
     passwordConfirmation: validatePasswordConfirmation,
 };
 
@@ -19,9 +22,12 @@ export const validationErrors = {
     email: 'Неверная почта',
     login: 'Неверный логин',
     first_name: 'Неверное имя',
+    display_name: 'Неверное имя',
     second_name: 'Неверная фамилия',
     phone: 'Неверный номер',
     password: 'Неверный пароль',
+    oldPassword: 'Неверный пароль',
+    newPassword: 'Неверный пароль',
     passwordConfirmation: 'Пароли не совпадают',
 };
 

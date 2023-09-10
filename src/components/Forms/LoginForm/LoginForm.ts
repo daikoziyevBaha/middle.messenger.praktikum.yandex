@@ -3,12 +3,11 @@ import LoginFormTmpl from './LoginForm.tmpl';
 import './LoginForm.scss';
 import Block from "../../../utils/Block";
 import isValid, { validationErrors } from "../../../utils/validators";
-import UserAPI from "./api/login-api";
+import AuthController from "../../../controllers/AuthController";
+import { SigninData } from "../../../api/AuthApi";
 
 export default class LoginForm extends Block {
     static template = Handlebars.compile(LoginFormTmpl);
-
-    userController = new UserAPI();
 
     init() {
         this.props.fields = [
@@ -26,7 +25,7 @@ export default class LoginForm extends Block {
             },
         ];
         this.props.events = {
-            submit: this.onSubmit.bind(this)
+            submit: this.onSubmit.bind(this),
         };
     }
 
@@ -83,8 +82,8 @@ export default class LoginForm extends Block {
         if (isFormValid) {
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData);
-            this.userController
-                .request(data);
+            AuthController
+                .signin(data as unknown as SigninData);
         } else {
             this.setProps({
                 fields: newFields,

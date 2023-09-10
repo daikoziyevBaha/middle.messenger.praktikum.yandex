@@ -14,6 +14,18 @@ class NavigationPage extends Block {
                 href: '/sign-up',
                 text: '\'/sign-up\': RegisterPage',
             },
+            {
+                href: '/profile',
+                text: '\'/profile\': ProfilePage',
+            },
+            {
+                href: '/profile-edit',
+                text: '\'/profile-edit\': ProfileEditPage',
+            },
+            {
+                href: '/password-edit',
+                text: '\'/profile-edit\': PasswordEditPage',
+            },
         ];
     }
 

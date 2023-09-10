@@ -5,5 +5,6 @@ export default `
         type="{{type}}"
         value="{{value}}"
         placeholder="{{placeholder}}"
+        id="{{id}}"
     />
 `;

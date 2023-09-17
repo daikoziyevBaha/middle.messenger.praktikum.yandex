@@ -18,15 +18,6 @@ The project's codebase was typed with TypeScript. TypeScript is a superset of Ja
 Parent Class: Block
 A parent class called Block was created in the project to serve as the foundation for various components of the application. This class generalizes common functionality that can be reused across different components.
 
-Mutable Store:
-class Store was created using pattern Singleton to store project data such as user, chats, messages, selectedChat and etc.
-
-Router:
-Project navigation was realised via class Router, this class created using singleton pattern, this object can route between paths and saving history.
-
-Handlebars:
-Templating tool.
-
 EventBus Class
 To manage events in the application, an EventBus class was created. The EventBus facilitates communication between components by allowing them to subscribe to specific events and be notified of changes.
 

@@ -14,7 +14,8 @@
   }
 
   &__body {
-    flex: auto;
+      flex-grow: 1;
+      overflow: auto;
   }
 
   &__footer {
@@ -25,7 +26,6 @@
     padding: 10px 0;
     gap: 10px;
   }
-
 }
 
 .chat-container {
@@ -33,7 +33,7 @@
   flex-direction: column;
   overflow-y: auto;
   justify-content: end;
-  height: 100%;
+  //height: 100%;
   padding: 20px 0;
 }
 
@@ -161,6 +161,7 @@
   display: flex;
   align-items: center;
     cursor: pointer;
+    color: black !important;
 }
 
 .attach-menu {
@@ -191,17 +192,16 @@
   position: relative;
 
   &__window {
+    display: flex;
     position: absolute;
     width: 210px;
     top: 25.5px;
     right: 10px;
-    padding: 15px;
+    padding: 15px 0;
     border-radius: 12px;
     background: #FFF;
     box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
-    display: flex;
     flex-direction: column;
-    gap: 16px;
     cursor: pointer;
   }
 }
@@ -210,6 +210,11 @@
   display: flex;
   gap: 15px;
   align-items: center;
+    padding: 12px;
+
+    &:hover {
+        background: cornflowerblue;
+    }
 
   &__text {
     color: #1E1E1E;
@@ -226,4 +231,17 @@
 
 .delete-user-modal {
   display: none;
+}
+
+.send-btn {
+    cursor: pointer;
+    border: none;
+    background: black;
+    color: #fff !important;
+    border-radius: 10px;
+    margin-left: .5rem;
+
+    &__text {
+        color: #fff;
+    }
 }

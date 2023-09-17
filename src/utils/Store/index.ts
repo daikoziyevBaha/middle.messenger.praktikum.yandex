@@ -2,7 +2,8 @@ import Block from "../Block";
 import EventBus from "../EventBus";
 import { set } from "../../services/helpers";
 import { User } from "../../api/AuthApi";
-import isEqual from "../../services/isEqual";
+import { ChatInfo } from "../../api/ChatsAPI";
+import { Message } from "../../controllers/MessagesController";
 
 // eslint-disable-next-line no-shadow
 export enum StoreEvents {
@@ -11,9 +12,9 @@ export enum StoreEvents {
 
 interface State {
     user: User;
-    // chats: ChatInfo[];
-    // messages: Record<number, Message[]>;
-    // selectedChat?: number;
+    chats: ChatInfo[];
+    messages: Record<number, Message[]>;
+    selectedChat?: number;
 }
 
 export class Store extends EventBus {

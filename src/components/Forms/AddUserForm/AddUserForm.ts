@@ -1,13 +1,32 @@
+import Handlebars from "handlebars";
 import './AddUserForm.scss';
-import OldBlock from '../../Block/OldBlock';
 import AddUserFormTmpl from './AddUserForm.tmpl';
+import Block from "../../../utils/Block";
+import ChatsController from "../../../controllers/ChatsController";
+import { withStore } from "../../../utils/Store";
 
-export default class AddUserForm extends OldBlock {
-    constructor(props) {
-        super('form', props);
+class AddUserForm extends Block {
+    static template = Handlebars.compile(AddUserFormTmpl);
+
+    init() {
+        this.props.events = {
+            submit: this.onSubmit.bind(this),
+        };
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        const form = new FormData(e.target);
+        const id = form.get("id");
+        ChatsController
+            .addUserToChat(this.props.selectedChat, +id as number);
     }
 
     render() {
-        return this.compile(AddUserFormTmpl, this.props);
+        return this.compile(AddUserForm.template, this.props);
     }
 }
+
+const withSelectedChat = withStore(state => ({ selectedChat: state.selectedChat }));
+
+export default withSelectedChat(AddUserForm);

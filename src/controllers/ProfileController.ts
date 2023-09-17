@@ -1,6 +1,6 @@
-import ProfileAPI, {AvatarData, PasswordData} from "../api/ProfileApi";
+import ProfileAPI, { PasswordData } from "../api/ProfileApi";
 import store from "../utils/Store";
-import {SignupData} from "../api/AuthApi";
+import { SignupData } from "../api/AuthApi";
 import router from "../utils/Router";
 
 export class ProfileController {
@@ -16,7 +16,7 @@ export class ProfileController {
 
             store.set("user", user);
         } catch (e: any) {
-            throw new Error("");
+            router.go('/500');
         }
     }
 
@@ -25,9 +25,9 @@ export class ProfileController {
             const user = await this.api.changeProfile(data);
 
             store.set("user", user);
-            router.go('/profile');
+            router.go('/settings');
         } catch (e: any) {
-            throw new Error("");
+            router.go('/500');
         }
     }
 
@@ -35,9 +35,9 @@ export class ProfileController {
         try {
             await this.api.changePassword(data);
 
-            router.go('/profile');
+            router.go('/settings');
         } catch (e: any) {
-            throw new Error("");
+            router.go('/500');
         }
     }
 }

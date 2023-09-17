@@ -1,9 +1,11 @@
 export default `
-    <div class="profile-container">
-        <div class="profile">
-            {{{ Avatar avatar=avatar }}}
-            {{{ PasswordEditForm }}}
+    {{#Main}}
+        <div class="profile-container">
+            <div class="profile">
+                {{{ Avatar avatar=avatar }}}
+                {{{ PasswordEditForm }}}
+            </div>
+            {{{ GoBack }}}
         </div>
-        {{{ GoBack }}}
-    </div>
+    {{/Main}}
 `;

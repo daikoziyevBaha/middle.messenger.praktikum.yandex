@@ -7,6 +7,9 @@ export default class GoBack extends Block {
     static template = Handlebars.compile(GoBackTmpl);
 
     render() {
-        return this.compile(GoBack.template, this.props);
+        return this.compile(GoBack.template, {
+            ...this.props,
+            href: this.props.href || '/messenger',
+        });
     }
 }

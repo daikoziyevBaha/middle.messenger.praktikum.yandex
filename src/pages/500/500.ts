@@ -1,13 +1,12 @@
+import Handlebars from "handlebars";
 import './500.scss';
 import ServerErrorTmpl from './500.tmpl';
-import OldBlock from '../../components/Block/OldBlock';
+import Block from "../../utils/Block";
 
-export default class ServerError extends OldBlock {
-    constructor(props) {
-        super('div', props);
-    }
+export default class ServerError extends Block {
+    static template = Handlebars.compile(ServerErrorTmpl);
 
     render() {
-        return this.compile(ServerErrorTmpl, this.props);
+        return this.compile(ServerError.template, this.props);
     }
 }

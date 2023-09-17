@@ -2,6 +2,7 @@
 import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI';
 import store from '../utils/Store';
 import router from '../utils/Router';
+import MessagesController from "./MessagesController";
 
 export class AuthController {
     private readonly api: AuthAPI;
@@ -16,9 +17,9 @@ export class AuthController {
 
             await this.fetchUser();
 
-            router.go('/profile');
+            router.go('/messenger');
         } catch (e: any) {
-            console.error(e);
+            throw new Error(e.message);
         }
     }
 
@@ -28,9 +29,9 @@ export class AuthController {
 
             await this.fetchUser();
 
-            router.go('/profile');
+            router.go('/messenger');
         } catch (e: any) {
-            console.error(e.message);
+            throw new Error(e.message);
         }
     }
 
@@ -41,13 +42,13 @@ export class AuthController {
 
     async logout() {
         try {
-            // MessagesController.closeAll();
+            MessagesController.closeAll();
 
             await this.api.logout();
 
             router.go('/');
         } catch (e: any) {
-            console.error(e.message);
+            throw new Error(e.message);
         }
     }
 }

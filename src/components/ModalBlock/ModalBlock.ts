@@ -12,7 +12,6 @@ export default class ModalBlock extends Block {
             click: e => {
                 e.stopPropagation();
                 if (e.target.id === "modal-window") {
-                    console.log("Modal window close");
                     this.props.onClose();
                 }
             },

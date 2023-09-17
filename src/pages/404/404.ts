@@ -1,13 +1,12 @@
+import Handlebars from "handlebars";
 import './404.scss';
 import NotFoundTmpl from './404.tmpl';
-import OldBlock from '../../components/Block/OldBlock';
+import Block from "../../utils/Block";
 
-export default class NotFound extends OldBlock {
-    constructor(props) {
-        super('div', props);
-    }
+export default class NotFound extends Block {
+    static template = Handlebars.compile(NotFoundTmpl);
 
     render() {
-        return this.compile(NotFoundTmpl, this.props);
+        return this.compile(NotFound.template, this.props);
     }
 }

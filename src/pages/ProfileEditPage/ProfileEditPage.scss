@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
 }
+
 .profile {
   height: 100%;
   width: 40%;
@@ -26,12 +27,14 @@
     margin-bottom: 60px;
     align-self: center;
   }
+
   &__change-data {
     padding-bottom: .63rem;
     width: 100%;
     border-bottom: 1.5px solid #EAEAEA;
     margin-bottom: 10px;
   }
+
   &__avatar {
     width: 130px;
     height: 130px;
@@ -48,6 +51,7 @@
         object-fit: cover;
       }
     }
+
     &__text {
       width: 100%;
       height: 100%;
@@ -99,6 +103,7 @@
     font-weight: 500;
     line-height: 13px;
   }
+
   &__value {
     color: #999;
     text-align: right;
@@ -116,6 +121,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 0.8125rem;
+
   &_red {
     color: red;
   }

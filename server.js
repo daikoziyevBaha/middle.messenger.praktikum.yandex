@@ -10,5 +10,6 @@ app.use('/*', (req, res) => {
 });
 
 app.listen(PORT, () => {
+    /* eslint */
     console.log(`MessengerApp listening on port ${PORT}!`);
 });

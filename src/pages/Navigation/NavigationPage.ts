@@ -8,7 +8,7 @@ class NavigationPage extends Block {
         this.props.links = [
             {
                 href: '/sign-in',
-                text: '\'/login\': LoginPage',
+                text: '\'/sign-in\': LoginPage',
             },
             {
                 href: '/sign-up',
@@ -24,7 +24,7 @@ class NavigationPage extends Block {
             },
             {
                 href: '/password-edit',
-                text: '\'/profile-edit\': PasswordEditPage',
+                text: '\'/password-edit\': PasswordEditPage',
             },
             {
                 href: '/messenger',

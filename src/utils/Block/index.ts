@@ -10,6 +10,8 @@ class Block<P extends Record<string, any> = any> {
         FLOW_RENDER: 'flow:render',
     };
 
+    public _setUpdate = false;
+
     public id = makeUUID();
 
     protected props: any;
@@ -165,6 +167,7 @@ class Block<P extends Record<string, any> = any> {
     }
 
     _makePropsProxy(props: any) {
+        // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
         const self = this;
 
         return new Proxy(props, {
@@ -173,11 +176,15 @@ class Block<P extends Record<string, any> = any> {
                 return typeof value === "function" ? value.bind(target) : value;
             },
             set(target, prop, value) {
-                const oldTarget = { ...target };
-
+                if (target[prop] !== value) {
+                    self._setUpdate = true;
+                }
                 target[prop] = value;
-
-                self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+                if (self._setUpdate) {
+                    const oldTarget = { ...target };
+                    self._setUpdate = false;
+                    self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+                }
                 return true;
             },
             deleteProperty() {

@@ -44,7 +44,7 @@ class Router {
             this.go('/404');
             return;
         }
-        if (this._currentRoute) {
+        if (this._currentRoute && this._currentRoute !== route) {
             this._currentRoute.leave();
         }
 

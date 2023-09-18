@@ -10,6 +10,8 @@ class Block<P extends Record<string, any> = any> {
         FLOW_RENDER: 'flow:render',
     };
 
+    public _setUpdate = false;
+
     public id = makeUUID();
 
     protected props: any;
@@ -174,13 +176,15 @@ class Block<P extends Record<string, any> = any> {
                 return typeof value === "function" ? value.bind(target) : value;
             },
             set(target, prop, value) {
-                const oldTarget = { ...target };
-
+                if (target[prop] !== value) {
+                    self._setUpdate = true;
+                }
                 target[prop] = value;
-
-                // Запускаем обновление компоненты
-                // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
-                self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+                if (self._setUpdate) {
+                    const oldTarget = { ...target };
+                    self._setUpdate = false;
+                    self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+                }
                 return true;
             },
             deleteProperty() {

@@ -1,5 +1,5 @@
 import { v4 as makeUUID } from 'uuid';
-import EventBus from '../EventBus/index.ts';
+import EventBus from '../EventBus';
 
 // Нельзя создавать экземпляр данного класса
 class Block<P extends Record<string, any> = any> {
@@ -9,8 +9,6 @@ class Block<P extends Record<string, any> = any> {
         FLOW_CDU: 'flow:component-did-update',
         FLOW_RENDER: 'flow:render',
     };
-
-    public _setUpdate = false;
 
     public id = makeUUID();
 
@@ -167,7 +165,6 @@ class Block<P extends Record<string, any> = any> {
     }
 
     _makePropsProxy(props: any) {
-        // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
         const self = this;
 
         return new Proxy(props, {
@@ -176,15 +173,11 @@ class Block<P extends Record<string, any> = any> {
                 return typeof value === "function" ? value.bind(target) : value;
             },
             set(target, prop, value) {
-                if (target[prop] !== value) {
-                    self._setUpdate = true;
-                }
+                const oldTarget = { ...target };
+
                 target[prop] = value;
-                if (self._setUpdate) {
-                    const oldTarget = { ...target };
-                    self._setUpdate = false;
-                    self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
-                }
+
+                self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
                 return true;
             },
             deleteProperty() {

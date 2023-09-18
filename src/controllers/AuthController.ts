@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
-import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI';
+import API, { AuthAPI, SigninData, SignupData } from "../api/AuthApi";
 import store from '../utils/Store';
 import router from '../utils/Router';
 import MessagesController from "./MessagesController";

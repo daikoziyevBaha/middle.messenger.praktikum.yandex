@@ -19,6 +19,9 @@ export class AuthController {
 
             router.go('/messenger');
         } catch (e: any) {
+            if (e.reason === "User already in system") {
+                router.go('/messenger');
+            }
             throw new Error(e.message);
         }
     }

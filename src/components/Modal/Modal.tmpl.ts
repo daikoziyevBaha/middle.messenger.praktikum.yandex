@@ -1,5 +1,3 @@
 export default `
-    <div class="modal-content">
-        {{{content}}}
-    </div>
+    <div class="modal-content"></div>
 `;

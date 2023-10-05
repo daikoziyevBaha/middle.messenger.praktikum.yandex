@@ -4,6 +4,11 @@
   gap: .62rem;
   border-bottom: 1px solid #EAEAEA;
   background: inherit;
+  cursor: pointer;
+
+  &__selected {
+      background: #E4EDFD;
+  }
 
   &:hover {
     background: #E4EDFD;

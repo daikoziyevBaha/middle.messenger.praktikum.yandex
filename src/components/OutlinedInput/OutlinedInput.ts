@@ -1,14 +1,12 @@
+import Handlebars from "handlebars";
 import InputTmpl from './OutlinedInput.tmpl';
 import './OutlinedInput.scss';
-import Block from '../Block/Block';
+import Block from "../../utils/Block";
 
 export default class OutlinedInput extends Block {
-
-    constructor(props) {
-        super('label', props);
-    }
+    static template = Handlebars.compile(InputTmpl);
 
     render() {
-        return this.compile(InputTmpl, this.props);
+        return this.compile(OutlinedInput.template, this.props);
     }
 }

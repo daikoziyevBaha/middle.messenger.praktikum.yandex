@@ -1,42 +1,48 @@
-import './ChatListPage.scss';
-import ChatListPageTmpl from './ChatListPage.tmpl';
-import Block from '../../components/Block/Block';
-import ChatItem from '../../components/ChatItem/ChatItem';
-import ChatList from '../../components/ChatList/ChatList';
-import AvatarShort from '../../components/AvatarShort/AvatarShort';
-import { data } from '../../constants/MockData';
+import Handlebars from "handlebars";
+import Block from '../../utils/Block';
+import ChatListPageTmpl from "./ChatListPage.tmpl";
+import "./ChatListPage.scss";
+import ChatsController from "../../controllers/ChatsController";
 
-class ChatListPage extends Block {
-    constructor(props) {
-        super('div', props);
+export default class MessengerPage extends Block {
+    static template = Handlebars.compile(ChatListPageTmpl);
+
+    protected init() {
+        this.props.onOpenCreateChat = e => {
+            e.preventDefault();
+            this.setProps({
+                isOpenCreateChat: true,
+            });
+        };
+        this.props.onCloseCreateChat = () => {
+            this.setProps({
+                isOpenCreateChat: false,
+            });
+        };
+        this.props.chatTitle = '';
+        this.props.onTitleBlur = this.onTitleBlur.bind(this);
+        this.props.onSubmitNewChat = this.onSubmitNewChat.bind(this);
+        ChatsController.fetchChats();
+    }
+
+    onTitleBlur(e) {
+        this.setProps({
+            chatTitle: e.target.value,
+        });
+    }
+
+    onSubmitNewChat(e) {
+        e.preventDefault();
+        ChatsController
+            .create(this.props.chatTitle as string)
+            .then(() => {
+                this.setProps({
+                    isOpenCreateChat: false,
+                });
+            });
     }
 
     render() {
-        return this.compile(ChatListPageTmpl, this.props);
+        return this.compile(MessengerPage.template, this.props);
     }
-}
-export default function getChatListPage() {
-    const chats = data.map((chat) => new ChatItem({
-        attr: {
-            class: 'chat',
-        },
-        ...chat,
-        avatar: new AvatarShort({
-            attr: {
-                class: 'avatar-block',
-            },
-        }),
-    }));
-    const chatList = new ChatList({
-        attr: {
-            class: 'chat-list',
-        },
-        chatList: chats,
-    });
-    return new ChatListPage({
-        attr: {
-            class: 'container',
-        },
-        chatList,
-    });
 }

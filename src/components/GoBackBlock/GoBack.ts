@@ -1,13 +1,15 @@
+import Handlebars from "handlebars";
 import GoBackTmpl from './GoBack.tmpl';
 import './GoBack.scss';
-import Block from '../Block/Block';
+import Block from "../../utils/Block";
 
 export default class GoBack extends Block {
-    constructor(props) {
-        super('div', props);
-    }
+    static template = Handlebars.compile(GoBackTmpl);
 
     render() {
-        return this.compile(GoBackTmpl, this.props);
+        return this.compile(GoBack.template, {
+            ...this.props,
+            href: this.props.href || '/messenger',
+        });
     }
 }

@@ -1,5 +1,9 @@
 export default `
-    <div class="login">
-        {{{loginModal}}}
-    </div>
+    {{#Main}}
+        <div class="login">
+            {{#Modal}}
+                {{{ LoginForm }}}
+            {{/Modal}}
+        </div>
+    {{/Main}}
 `;

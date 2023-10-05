@@ -1,9 +1,10 @@
 export default `
     <input 
-        name={{name}} 
-        class="{{className}}" 
-        type="{{type}}" 
-        value="{{value}}" 
+        name="{{name}}" 
+        class="{{class}}"
+        type="{{type}}"
+        value="{{value}}"
         placeholder="{{placeholder}}"
+        id="{{id}}"
     />
 `;

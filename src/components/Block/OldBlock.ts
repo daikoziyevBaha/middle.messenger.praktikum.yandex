@@ -2,7 +2,7 @@ import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from '../../utils/EventBus';
 
-abstract class Block<Props extends Record<string, any> = unknown> {
+abstract class OldBlock<Props extends Record<string, any> = unknown> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -38,7 +38,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
         this.eventBus = () => eventBus;
 
         this._registerEvents(eventBus);
-        eventBus.emit(Block.EVENTS.INIT);
+        eventBus.emit(OldBlock.EVENTS.INIT);
     }
 
     // eslint-disable-next-line class-methods-use-this
@@ -47,7 +47,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
         const props = {};
 
         Object.entries(propsAndChildren).forEach(([key, value]) => {
-            if (value instanceof Block) {
+            if (value instanceof OldBlock) {
                 children[key] = value;
             } else {
                 props[key] = value;
@@ -67,7 +67,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
         Object.entries(this.props).forEach(([key, prop]) => {
             if (Array.isArray(prop)) {
                 prop.forEach((item, index) => {
-                    if (item instanceof Block) {
+                    if (item instanceof OldBlock) {
                         blockArr.push(item);
                         propsAndStubs[key][index] = `<div data-id="${item._id}"></div>`;
                     }
@@ -90,10 +90,10 @@ abstract class Block<Props extends Record<string, any> = unknown> {
     }
 
     _registerEvents(eventBus: EventBus) {
-        eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+        eventBus.on(OldBlock.EVENTS.INIT, this.init.bind(this));
+        eventBus.on(OldBlock.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+        eventBus.on(OldBlock.EVENTS.FLOW_RENDER, this._render.bind(this));
+        eventBus.on(OldBlock.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     }
 
     _createResources() {
@@ -103,7 +103,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
 
     init() {
         this._createResources();
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this.eventBus().emit(OldBlock.EVENTS.FLOW_RENDER);
     }
 
     _componentDidMount() {
@@ -117,7 +117,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
     componentDidMount() {}
 
     dispatchComponentDidMount() {
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+        this.eventBus().emit(OldBlock.EVENTS.FLOW_CDM);
     }
 
     _componentDidUpdate(oldProps: Props, newProps: Props) {
@@ -147,7 +147,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
         }
         if (this._setUpdate) {
             this._setUpdate = false;
-            this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, this.props);
+            this.eventBus().emit(OldBlock.EVENTS.FLOW_CDU, oldProps, this.props);
         }
     };
 
@@ -229,4 +229,4 @@ abstract class Block<Props extends Record<string, any> = unknown> {
     }
 }
 
-export default Block;
+export default OldBlock;

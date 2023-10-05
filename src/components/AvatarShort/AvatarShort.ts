@@ -1,13 +1,12 @@
+import Handlebars from "handlebars";
 import './AvatarShort.scss';
-import Block from '../Block/Block';
 import AvatarShortTmpl from './AvatarShort.tmpl';
+import Block from "../../utils/Block";
 
 export default class AvatarShort extends Block {
-    constructor(props) {
-        super('div', props);
-    }
+    static template = Handlebars.compile(AvatarShortTmpl);
 
     render() {
-        return this.compile(AvatarShortTmpl, this.props);
+        return this.compile(AvatarShort.template, this.props);
     }
 }

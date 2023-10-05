@@ -2,6 +2,7 @@ export {};
 
 declare global {
     interface Window {
+        openChatPopup: (e: any) => void;
         profile: {
             openChangeAvatarModal?: () => void;
         };
@@ -10,4 +11,3 @@ declare global {
         style: CSSStyleDeclaration
     }
 }
-

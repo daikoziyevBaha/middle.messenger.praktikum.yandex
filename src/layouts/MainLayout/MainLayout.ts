@@ -1,12 +1,11 @@
-import Block from '../../components/Block/Block';
+import Handlebars from "handlebars";
 import MainLayoutTmpl from './MainLayout.tmpl';
+import Block from "../../utils/Block";
 
 export default class MainLayout extends Block {
-    constructor(props) {
-        super('main', props);
-    }
+    static template = Handlebars.compile(MainLayoutTmpl);
 
     render() {
-        return this.compile(MainLayoutTmpl, this.props);
+        return this.compile(MainLayout.template, this.props);
     }
 }

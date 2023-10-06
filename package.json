@@ -3,11 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run precommit"
-    }
-  },
   "scripts": {
     "start": "npm run build  && node ./server.js",
     "dev": "vite --open",
@@ -16,6 +11,11 @@
     "test": "mocha --timeout 10000",
     "lint": "node_modules/.bin/eslint . --fix",
     "precommit": "npm run lint && npm run test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   },
   "devDependencies": {
     "@types/chai": "^4.3.6",

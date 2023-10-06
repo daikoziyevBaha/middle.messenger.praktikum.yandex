@@ -5,8 +5,7 @@
   "type": "module",
   "husky": {
     "hooks": {
-      "pre-commit": "echo \\”[Husky] pre-commit\\”",
-      "pre-push": "npm run "
+      "pre-commit": "npm run precommit",
     }
   },
   "scripts": {
@@ -15,7 +14,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "mocha --timeout 10000",
-    "lint": "node_modules/.bin/eslint . --fix"
+    "lint": "node_modules/.bin/eslint . --fix",
+    "precommit": "npm run lint && npm run test"
   },
   "devDependencies": {
     "@types/chai": "^4.3.6",

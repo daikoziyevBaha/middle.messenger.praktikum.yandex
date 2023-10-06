@@ -27,6 +27,15 @@ The ESLint tool was utilized to maintain a standardized coding style and identif
 Stylelint
 The Stylelint tool was employed to enforce consistent CSS styles in the project. Stylelint helps identify and fix formatting issues, style inconsistencies, and other problems within CSS files.
 
+## Testing and Debugging
+Mocha and Chai
+These libraries used for testing general components of the project: Router, HTTPTransport and Store.
+Files consist subname "test" to identify them
+In order to run tests, there is command named "npm run test"
+
+Husky
+This instrument enable to detect lenter and test errors before commiting changes.
+There is special script "npm run precommit" in package.json that runs while developer wants to commit something.
 
 ## Usage
 

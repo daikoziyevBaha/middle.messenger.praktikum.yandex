@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (isProtectedRoute) {
             router.go('/sign-in');
         }
+
         router.start();
     }
 });

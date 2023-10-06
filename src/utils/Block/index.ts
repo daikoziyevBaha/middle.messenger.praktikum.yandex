@@ -1,5 +1,5 @@
 import { v4 as makeUUID } from 'uuid';
-import EventBus from '../EventBus';
+import EventBus from '../EventBus/index.ts';
 
 // Нельзя создавать экземпляр данного класса
 class Block<P extends Record<string, any> = any> {

@@ -1,5 +1,6 @@
 import { User } from "./AuthApi";
 import BaseAPI from "../utils/BaseAPI";
+import HTTPTransport from "../utils/HTTPTransport/index.js";
 
 export interface ChatInfo {
     id: number;

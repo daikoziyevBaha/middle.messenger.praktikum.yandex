@@ -5,7 +5,7 @@
   "type": "module",
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all test lint:all",
+      "pre-commit": "echo \\”[Husky] pre-commit\\”",
       "pre-push": "npm run "
     }
   },

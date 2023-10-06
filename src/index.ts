@@ -60,7 +60,8 @@ registerComponent('ChatDetails', ChatDetails);
 registerComponent('SendMessageForm', SendMessageForm);
 registerComponent('ChatOptions', ChatOptions);
 registerComponent('AddUserForm', AddUserForm);
-registerComponent('DeleteUserForm', DeleteUserForm);
+registerComponent('DeleteUserForm', DeleteUserForm)
+
 // eslint-disable-next-line eqeqeq
 Handlebars.registerHelper('eq', (a: any, b: any) => a == b);
 

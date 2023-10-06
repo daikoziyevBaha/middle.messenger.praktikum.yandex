@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "mocha --timeout 10000",
-    "lint": "node_modules/.bin/eslint . --fix",
+    "lint": "eslint src/**/*.ts --fix",
     "precommit": "npm run lint && npm run test"
   },
   "husky": {

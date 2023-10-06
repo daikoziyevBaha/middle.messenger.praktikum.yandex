@@ -1,5 +1,5 @@
 import BaseAPI from "../utils/BaseAPI";
-import {SignupData} from "./AuthApi";
+import { SignupData } from "./AuthApi";
 
 export type AvatarData = {
     avatar: File;

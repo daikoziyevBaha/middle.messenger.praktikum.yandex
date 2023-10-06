@@ -77,12 +77,12 @@ abstract class OldBlock<Props extends Record<string, any> = unknown> {
         const fragment = this._createDocumentElement('template');
         fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
         if (blockArr.length > 0) {
-            blockArr.forEach((item) => {
+            blockArr.forEach(item => {
                 const stub = fragment.content.querySelector(`[data-id="${item._id}"]`);
                 stub.replaceWith(item.getContent());
             });
         }
-        Object.values(this.children).forEach((child) => {
+        Object.values(this.children).forEach(child => {
             const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
             stub.replaceWith(child.getContent());
         });
@@ -109,7 +109,7 @@ abstract class OldBlock<Props extends Record<string, any> = unknown> {
     _componentDidMount() {
         this.componentDidMount();
 
-        Object.values(this.children).forEach((child) => {
+        Object.values(this.children).forEach(child => {
             child.dispatchComponentDidMount();
         });
     }
@@ -131,7 +131,7 @@ abstract class OldBlock<Props extends Record<string, any> = unknown> {
         return oldProps !== newProps;
     }
 
-    setProps = (nextProps) => {
+    setProps = nextProps => {
         const oldProps = { ...this.props };
         if (!nextProps) {
             return;
@@ -158,14 +158,14 @@ abstract class OldBlock<Props extends Record<string, any> = unknown> {
     _addEvents() {
         const { events = {} } = this.props;
 
-        Object.keys(events).forEach((eventName) => {
+        Object.keys(events).forEach(eventName => {
             this._element.addEventListener(eventName, events[eventName]);
         });
     }
 
     _removeEvents() {
         const { events = {} } = this.props;
-        Object.keys(events).forEach((eventName) => {
+        Object.keys(events).forEach(eventName => {
             this._element.removeEventListener(eventName, events[eventName]);
         });
     }

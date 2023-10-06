@@ -61,8 +61,9 @@ registerComponent('SendMessageForm', SendMessageForm);
 registerComponent('ChatOptions', ChatOptions);
 registerComponent('AddUserForm', AddUserForm);
 registerComponent('DeleteUserForm', DeleteUserForm);
+
 // eslint-disable-next-line eqeqeq
-Handlebars.registerHelper('eq', (a, b) => a == b);
+Handlebars.registerHelper('eq', (a: any, b: any) => a == b);
 
 document.addEventListener('DOMContentLoaded', async () => {
     router
@@ -104,6 +105,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (isProtectedRoute) {
             router.go('/sign-in');
         }
+
         router.start();
     }
 });

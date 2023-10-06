@@ -1,9 +1,9 @@
-import Block from "../Block";
-import EventBus from "../EventBus";
-import { set } from "../../services/helpers";
-import { User } from "../../api/AuthApi";
-import { ChatInfo } from "../../api/ChatsAPI";
-import { Message } from "../../controllers/MessagesController";
+import { User } from "../../api/AuthApi.ts";
+import { ChatInfo } from "../../api/ChatsAPI.ts";
+import { Message } from "../../controllers/MessagesController.ts";
+import EventBus from "../EventBus/index.ts";
+import Block from "../Block/index.ts";
+import { set } from "../../services/helpers.ts";
 
 // eslint-disable-next-line no-shadow
 export enum StoreEvents {
@@ -36,6 +36,7 @@ const store = new Store();
 window.store = store;
 
 export function withStore<SP>(mapStateToProps: (state: State) => SP) {
+    // @ts-ignore
     return function wrap<P>(Component: typeof Block<SP & P>) {
         return class WithStore extends Component {
             constructor(props: Omit<P, keyof SP>) {

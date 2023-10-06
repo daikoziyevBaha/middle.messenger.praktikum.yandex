@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test": "mocha --timeout 10000",
     "lint": "eslint src/**/*.ts --fix",
-    "precommit": "npm run lint && npm run test"
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "precommit": "npm run lint && npm run stylelint && npm run test"
   },
   "husky": {
     "hooks": {

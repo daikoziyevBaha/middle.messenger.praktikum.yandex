@@ -17,8 +17,10 @@ export default class SendMessageForm extends Block {
         e.preventDefault();
         const formData = new FormData(e.target);
         const message = formData.get('message');
-        MessagesController
-            .sendMessage(this.props.chatId, message as string);
+        if (message) {
+            MessagesController
+                .sendMessage(this.props.chatId, message as string);
+        }
     }
 
     render() {

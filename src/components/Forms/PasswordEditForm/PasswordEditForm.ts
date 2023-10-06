@@ -5,7 +5,7 @@ import Block from "../../../utils/Block";
 import { withStore } from "../../../utils/Store";
 import isValid, { validationErrors } from "../../../utils/validators";
 import ProfileController from "../../../controllers/ProfileController";
-import {PasswordData} from "../../../api/ProfileApi";
+import { PasswordData } from "../../../api/ProfileApi";
 
 class PasswordEditForm extends Block {
     static template = Handlebars.compile(PasswordEditFormTmpl);

@@ -4,7 +4,7 @@ export default function render(query, block) {
     // Можно завязаться на реализации вашего класса OldBlock
     root.appendChild(block.getContent());
 
-    block.dispatchComponentDidMount();
+    // block.dispatchComponentDidMount();
 
-    // return root;
+    return root;
 }
